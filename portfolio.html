@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — MAMMA MIA Marketing Agency</title>
+  <meta name="description" content="Explore MAMMA MIA's portfolio of Branding, Social Media Marketing, Photo Production, and Video Production work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
+  <style>
+    .overview-section { margin-bottom: clamp(60px, 8vw, 100px); }
+    .overview-section__head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 24px; margin-bottom: 32px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-gray-200, #e2e2de);
+    }
+    .overview-section__view-all {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-black, #0a0a0a); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.2s ease;
+    }
+    .overview-section__view-all:hover { color: var(--color-accent, #2a3bff); }
+    .overview-section__view-all svg { width: 14px; height: 14px; }
+    .port-card__img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Transition Curtain -->
+  <div class="page-curtain" id="pageCurtain"></div>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">
+      <span style="animation-delay:0.05s">M</span><span style="animation-delay:0.1s">A</span><span style="animation-delay:0.15s">M</span><span style="animation-delay:0.2s">M</span><span style="animation-delay:0.25s">A</span>&nbsp;<span style="animation-delay:0.35s">M</span><span style="animation-delay:0.4s">I</span><span style="animation-delay:0.45s">A</span>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-text" style="color:var(--color-black)">MAMMA MIA</span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">About Us</a>
+        <a href="price-plan.html" class="nav__link">Price Plan</a>
+        <a href="portfolio.html" class="nav__link active">Portfolio</a>
+        <a href="contact.html" class="nav__link">Contact Us</a>
+      </div>
+      <a href="contact.html" class="nav__cta btn btn-outline"><span>Book a Call</span></a>
+      <div class="nav__hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile-menu" id="mobileMenu">
+    <a href="index.html" class="nav__mobile-link">About Us</a>
+    <a href="price-plan.html" class="nav__mobile-link">Price Plan</a>
+    <a href="portfolio.html" class="nav__mobile-link">Portfolio</a>
+    <a href="contact.html" class="nav__mobile-link">Contact Us</a>
+  </div>
+
+  <!-- ======== PAGE HERO ======== -->
+  <header class="page-hero port-hero">
+    <div class="container">
+      <div class="page-hero__eyebrow reveal">
+        <span class="t-label">Our Work</span>
+      </div>
+      <h1 class="page-hero__title t-display reveal reveal-delay-1">
+        Work That<br /><span style="color:var(--color-accent)">Moves</span>
+      </h1>
+      <p class="page-hero__sub t-body reveal reveal-delay-2">
+        From concept to execution — a selection of campaigns, brands, and productions we've been proud to craft.
+      </p>
+    </div>
+  </header>
+  <!-- ======== FILTER BAR ======== -->
+  <div class="filter-bar" id="filterBar">
+    <div class="container">
+      <div class="filter-bar__inner">
+        <a class="filter-btn active" href="portfolio.html" data-filter="all">All</a>
+        <a class="filter-btn" href="portfolio-branding.html" data-filter="branding">Branding</a>
+        <a class="filter-btn" href="portfolio-social.html" data-filter="social">Social Media Marketing</a>
+        <a class="filter-btn" href="portfolio-photo.html" data-filter="photo">Photo Production</a>
+        <a class="filter-btn" href="portfolio-video.html" data-filter="video">Video Production</a>
+      </div>
+      <div class="filter-bar__count">
+        <span id="portfolioCount">78</span> <span class="t-label">Projects</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== OVERVIEW SECTIONS ======== -->
+  <main class="section portfolio-section">
+    <div class="container">
+
+      <section class="overview-section" data-cat="branding">
+        <div class="overview-section__head">
+          <span class="t-label">Branding</span>
+          <a href="portfolio-branding.html" class="overview-section__view-all btn-arrow">View All Branding <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+        <div class="portfolio-grid">
+        <article class="port-card" data-category="branding" data-asset-id="branding/01_branding_anthracite.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/SvH5hcFY" alt="Branding Anthracite" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Branding</span>
+            <h3 class="port-card__title">Branding Anthracite</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="branding" data-asset-id="branding/02_kitchen_il_forno.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/VZpLI7wy" alt="Kitchen Il Forno" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Branding</span>
+            <h3 class="port-card__title">Kitchen Il Forno</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="branding" data-asset-id="branding/03_el_molino_brand_deck.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/6b2BcHLB" alt="El Molino Brand Deck" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Branding</span>
+            <h3 class="port-card__title">El Molino Brand Deck</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="branding" data-asset-id="branding/09_uber_eats_promo.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/NOMIoabp" alt="Uber Eats Promo" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Branding</span>
+            <h3 class="port-card__title">Uber Eats Promo</h3>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="overview-section" data-cat="social">
+        <div class="overview-section__head">
+          <span class="t-label">Social Media Marketing</span>
+          <a href="portfolio-social.html" class="overview-section__view-all btn-arrow">View All Social Media Marketing <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+        <div class="portfolio-grid">
+        <article class="port-card" data-category="social" data-asset-id="social/01_brand_launching_thumb.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/9RKUHcNz" alt="Brand Launching" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Social Media Marketing</span>
+            <h3 class="port-card__title">Brand Launching</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="social" data-asset-id="social/02_cafe_opening_thumb.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/hXWcpVLj" alt="Cafe Opening" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Social Media Marketing</span>
+            <h3 class="port-card__title">Cafe Opening</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="social" data-asset-id="social/14_venue_thumb.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/3EehfBCn" alt="Venue" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Social Media Marketing</span>
+            <h3 class="port-card__title">Venue</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="social" data-asset-id="social/18_korea_tourism_1m.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/yKU2goVp" alt="Korea Tourism" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Social Media Marketing</span>
+            <h3 class="port-card__title">Korea Tourism</h3>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="overview-section" data-cat="photo">
+        <div class="overview-section__head">
+          <span class="t-label">Photo Production</span>
+          <a href="portfolio-photo.html" class="overview-section__view-all btn-arrow">View All Photo Production <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+        <div class="portfolio-grid">
+        <article class="port-card" data-category="photo" data-asset-id="photo/food/01_food_burger.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/neFGiniX" alt="Food Burger" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Photo Production</span>
+            <h3 class="port-card__title">Food Burger</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="photo" data-asset-id="photo/product/01_apparel_1.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/I3QbnlId" alt="Apparel 1" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Photo Production</span>
+            <h3 class="port-card__title">Apparel 1</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="photo" data-asset-id="photo/portrait_skincare/04_heather_1.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/hkN9y5ke" alt="Heather 1" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Photo Production</span>
+            <h3 class="port-card__title">Heather 1</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="photo" data-asset-id="photo/portrait_sushi/03_jeremy_and_hani_sushi.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/sX6vR2We" alt="Jeremy And Hani Sushi" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Photo Production</span>
+            <h3 class="port-card__title">Jeremy And Hani Sushi</h3>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="overview-section" data-cat="video">
+        <div class="overview-section__head">
+          <span class="t-label">Video Production</span>
+          <a href="portfolio-video.html" class="overview-section__view-all btn-arrow">View All Video Production <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+        <div class="portfolio-grid">
+        <article class="port-card" data-category="video" data-asset-id="video/03_cars_and_hoops.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/Yi5xqCBI" alt="Cars And Hoops" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Video Production</span>
+            <h3 class="port-card__title">Cars And Hoops</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="video" data-asset-id="video/06_f_diary_perfume.webp">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/LQ2uKYjv" alt="F Diary Perfume" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Video Production</span>
+            <h3 class="port-card__title">F Diary Perfume</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="video" data-asset-id="video/08_mcst_kocca_wild_vr.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/zSrfbM1O" alt="MCST KOCCA Wild VR" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Video Production</span>
+            <h3 class="port-card__title">MCST KOCCA Wild VR</h3>
+          </div>
+        </article>
+        <article class="port-card" data-category="video" data-asset-id="video/fashion_film_1_thumb.jpg">
+          <div class="port-card__thumb">
+            <img class="port-card__img" src="https://www.genspark.ai/api/files/s/fhRWWxrV" alt="Fashion Film 1" loading="lazy" />
+            <div class="port-card__overlay">
+              <a href="#" class="port-card__view btn-arrow">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="port-card__info">
+            <span class="port-card__cat tag tag--accent">Video Production</span>
+            <h3 class="port-card__title">Fashion Film 1</h3>
+          </div>
+        </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ======== CTA BAND ======== -->
+  <section class="cta-band section--dark" style="padding:clamp(80px,10vw,120px) 0; border-top:1px solid rgba(255,255,255,0.06)">
+    <div class="container">
+      <div class="cta-band__inner reveal">
+        <span class="t-label" style="color:rgba(255,255,255,0.4)">Let's Create Together</span>
+        <h2 class="cta-band__headline t-headline">Ready to Start<br />Your Project?</h2>
+        <div class="cta-band__actions">
+          <a href="contact.html" class="btn btn-outline-white">
+            <span>Book a Call</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__brand-name">MAMMA MIA</div>
+      <div class="footer__top">
+        <div class="footer__col">
+          <p class="footer__col-title">Navigation</p>
+          <nav class="footer__col-links">
+            <a href="index.html" class="footer__col-link">About Us</a>
+            <a href="price-plan.html" class="footer__col-link">Price Plan</a>
+            <a href="portfolio.html" class="footer__col-link">Portfolio</a>
+            <a href="contact.html" class="footer__col-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item">
+            <p class="footer__contact-label">Email</p>
+            <a href="mailto:inquiry.mammamia@gmail.com" class="footer__contact-value footer__col-link">inquiry.mammamia@gmail.com</a>
+          </div>
+          <div class="footer__contact-item">
+            <p class="footer__contact-label">Address</p>
+            <p class="footer__contact-value">6511 Sussex Ave, Burnaby, BC V5H 0K5</p>
+          </div>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-title">Services</p>
+          <nav class="footer__col-links">
+            <a href="portfolio-branding.html" class="footer__col-link">Branding</a>
+            <a href="portfolio-social.html" class="footer__col-link">Social Media Marketing</a>
+            <a href="portfolio-photo.html" class="footer__col-link">Photo Production</a>
+            <a href="portfolio-video.html" class="footer__col-link">Video Production</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 MAMMA MIA Marketing Agency. All rights reserved.</p>
+        <p class="footer__copy">Vancouver, BC, Canada</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/portfolio.js"></script>
+</body>
+</html>
