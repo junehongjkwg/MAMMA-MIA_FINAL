@@ -146,90 +146,90 @@
   /* ---- Portfolio Mosaic — MAMMA MIA actual work (mixed categories) ---- */
   const portfolioImages = [
     // Branding (9)
-    'https://www.genspark.ai/api/files/s/SvH5hcFY', // Branding Anthracite
-    'https://www.genspark.ai/api/files/s/VZpLI7wy', // Kitchen Il Forno
-    'https://www.genspark.ai/api/files/s/6b2BcHLB', // El Molino Brand Deck
-    'https://www.genspark.ai/api/files/s/Nuz0hH6o', // La Foret IG
-    'https://www.genspark.ai/api/files/s/RaXI7gQ3', // New Menu Promo 1
-    'https://www.genspark.ai/api/files/s/V4DeLbJm', // New Menu Promo 2
-    'https://www.genspark.ai/api/files/s/Rg0WNRcA', // New Menu Promo 3
-    'https://www.genspark.ai/api/files/s/sMcRCFhP', // Seasonal Promo
-    'https://www.genspark.ai/api/files/s/NOMIoabp', // Uber Eats Promo
+    'images/branding/01_branding_anthracite.webp', // Branding Anthracite
+    'images/branding/02_kitchen_il_forno.webp', // Kitchen Il Forno
+    'images/branding/03_el_molino_brand_deck.jpg', // El Molino Brand Deck
+    'images/branding/04_la_foret_ig.jpg', // La Foret IG
+    'images/branding/05_new_menu_promo_1.jpg', // New Menu Promo 1
+    'images/branding/06_new_menu_promo_2.jpg', // New Menu Promo 2
+    'images/branding/07_new_menu_promo_3.jpg', // New Menu Promo 3
+    'images/branding/08_seasonal_promo.webp', // Seasonal Promo
+    'images/branding/09_uber_eats_promo.jpg', // Uber Eats Promo
 
     // Social Media — Reels & Card News (19)
-    'https://www.genspark.ai/api/files/s/9RKUHcNz', // Brand Launching
-    'https://www.genspark.ai/api/files/s/hXWcpVLj', // Cafe Opening
-    'https://www.genspark.ai/api/files/s/LW2X8LCq', // Cocktail 1
-    'https://www.genspark.ai/api/files/s/RLwb3P5o', // Cocktail 2
-    'https://www.genspark.ai/api/files/s/rB96Jwhe', // Egg Benedict
-    'https://www.genspark.ai/api/files/s/S7T8Z70A', // Fashion Brand 1
-    'https://www.genspark.ai/api/files/s/4dZlfrN2', // Fashion Brand 2
-    'https://www.genspark.ai/api/files/s/UuKLjNc9', // Fashion Brand 3
-    'https://www.genspark.ai/api/files/s/ko8IWjOl', // Fashion Brand 4
-    'https://www.genspark.ai/api/files/s/HLB6rsrJ', // Fashion Brand 5
-    'https://www.genspark.ai/api/files/s/8o3u0O8n', // New Coffee Bear
-    'https://www.genspark.ai/api/files/s/pqyNZWhA', // New Dishes
-    'https://www.genspark.ai/api/files/s/1s2ve7zA', // Sotbab
-    'https://www.genspark.ai/api/files/s/3EehfBCn', // Venue
-    'https://www.genspark.ai/api/files/s/gJeN23Xd', // Fashion Week
-    'https://www.genspark.ai/api/files/s/qzXpxYuU', // Global Fashion Week
-    'https://www.genspark.ai/api/files/s/Wnm3XVVJ', // Health Supplement
-    'https://www.genspark.ai/api/files/s/yKU2goVp', // Korea Tourism
-    'https://www.genspark.ai/api/files/s/j2Zfxe3v', // Seoulgift Brand
+    'images/social/01_brand_launching_thumb.jpg', // Brand Launching
+    'images/social/02_cafe_opening_thumb.jpg', // Cafe Opening
+    'images/social/03_cocktail_1_thumb.jpg', // Cocktail 1
+    'images/social/04_cocktail_2_thumb.jpg', // Cocktail 2
+    'images/social/05_egg_benedict_thumb.jpg', // Egg Benedict
+    'images/social/06_fashion_brand_1_thumb.jpg', // Fashion Brand 1
+    'images/social/07_fashion_brand_2_thumb.jpg', // Fashion Brand 2
+    'images/social/08_fashion_brand_3_thumb.jpg', // Fashion Brand 3
+    'images/social/09_fashion_brand_4_thumb.jpg', // Fashion Brand 4
+    'images/social/10_fashion_brand_5_thumb.jpg', // Fashion Brand 5
+    'images/social/11_new_coffee_bear_thumb.jpg', // New Coffee Bear
+    'images/social/12_new_dishes_thumb.jpg', // New Dishes
+    'images/social/13_sotbab_thumb.jpg', // Sotbab
+    'images/social/14_venue_thumb.jpg', // Venue
+    'images/social/15_fashion_week_60pct.webp', // Fashion Week
+    'images/social/16_global_fashion_week_650pct.webp', // Global Fashion Week
+    'images/social/17_health_supplement_200pct.webp', // Health Supplement
+    'images/social/18_korea_tourism_1m.webp', // Korea Tourism
+    'images/social/19_seoulgift_brand.webp', // Seoulgift Brand
 
     // Photo Production — Food / Product / Portrait (40)
-    'https://www.genspark.ai/api/files/s/neFGiniX', // Food Burger
-    'https://www.genspark.ai/api/files/s/CYi4CdCy', // Food Chicken Wing
-    'https://www.genspark.ai/api/files/s/0d7cYmcz', // Food Cocktail
-    'https://www.genspark.ai/api/files/s/PN2kiG3P', // Food Cocktails
-    'https://www.genspark.ai/api/files/s/mTF2wwlc', // Food Korean Spice Noodle
-    'https://www.genspark.ai/api/files/s/Z3DGtmAR', // Food Martini Cocktail
-    'https://www.genspark.ai/api/files/s/B5K3kAt2', // Food New Dessert
-    'https://www.genspark.ai/api/files/s/ezbqtqhD', // Food Pasta
-    'https://www.genspark.ai/api/files/s/bummHgw2', // Food Pizza
-    'https://www.genspark.ai/api/files/s/Qb8F1hUK', // Food St Patrick
-    'https://www.genspark.ai/api/files/s/X0hwByka', // Food Tacos
-    'https://www.genspark.ai/api/files/s/I3QbnlId', // Apparel 1
-    'https://www.genspark.ai/api/files/s/dRHC7EvK', // Apparel 2
-    'https://www.genspark.ai/api/files/s/mPaEUCPu', // Apparel 3
-    'https://www.genspark.ai/api/files/s/BxYgSeLf', // Apparel 4
-    'https://www.genspark.ai/api/files/s/hpqQ5iyt', // Apparel 5
-    'https://www.genspark.ai/api/files/s/059o0Sa1', // Apparel 6
-    'https://www.genspark.ai/api/files/s/K9BTGp65', // Apparel 7
-    'https://www.genspark.ai/api/files/s/WQdjq5Hy', // Apparel 8
-    'https://www.genspark.ai/api/files/s/5MBkdwgN', // Arm Sleeve
-    'https://www.genspark.ai/api/files/s/wOJs8rDZ', // Engagement Ring
-    'https://www.genspark.ai/api/files/s/t0Awn76i', // Pantyhose
-    'https://www.genspark.ai/api/files/s/pNXHXWCf', // Studio Concept 1
-    'https://www.genspark.ai/api/files/s/n2QaqH3K', // Studio Concept 2
-    'https://www.genspark.ai/api/files/s/ebTGy8kq', // Studio Concept 3
-    'https://www.genspark.ai/api/files/s/zvGMriLE', // Retail Studio 1
-    'https://www.genspark.ai/api/files/s/mUwP9eA6', // Retail Studio 2
-    'https://www.genspark.ai/api/files/s/1LbUMaQZ', // Retail Studio 3
-    'https://www.genspark.ai/api/files/s/gZoEIdT9', // Thermo 1
-    'https://www.genspark.ai/api/files/s/Azx2mBDR', // Thermo 2
-    'https://www.genspark.ai/api/files/s/8u2WGMoa', // Thermo 3
-    'https://www.genspark.ai/api/files/s/oVpwLJJc', // Hani 1
-    'https://www.genspark.ai/api/files/s/ruebyWVP', // Hani 2
-    'https://www.genspark.ai/api/files/s/gLjRd4ei', // Hani 3
-    'https://www.genspark.ai/api/files/s/hkN9y5ke', // Heather 1
-    'https://www.genspark.ai/api/files/s/deQhz5hf', // Heather 2
-    'https://www.genspark.ai/api/files/s/6ssJgL3v', // Heather 3
-    'https://www.genspark.ai/api/files/s/kvRxwxYt', // Heather Sushi 1
-    'https://www.genspark.ai/api/files/s/WumrLwpE', // Heather Sushi 2
-    'https://www.genspark.ai/api/files/s/sX6vR2We', // Jeremy & Hani Sushi
+    'images/photo/food/01_food_burger.jpg', // Food Burger
+    'images/photo/food/02_food_chicken_wing.jpg', // Food Chicken Wing
+    'images/photo/food/03_food_cocktail.jpg', // Food Cocktail
+    'images/photo/food/04_food_cocktails.jpg', // Food Cocktails
+    'images/photo/food/05_food_korean_spice_noodle.webp', // Food Korean Spice Noodle
+    'images/photo/food/06_food_martini_cocktail.jpg', // Food Martini Cocktail
+    'images/photo/food/07_food_new_dessert.jpg', // Food New Dessert
+    'images/photo/food/08_food_pasta.jpg', // Food Pasta
+    'images/photo/food/09_food_pizza.jpg', // Food Pizza
+    'images/photo/food/10_food_st_patrick.webp', // Food St Patrick
+    'images/photo/food/11_food_tacos.jpg', // Food Tacos
+    'images/photo/product/01_apparel_1.jpg', // Apparel 1
+    'images/photo/product/02_apparel_2.jpg', // Apparel 2
+    'images/photo/product/03_apparel_3.jpg', // Apparel 3
+    'images/photo/product/04_apparel_4.jpg', // Apparel 4
+    'images/photo/product/05_apparel_5.jpg', // Apparel 5
+    'images/photo/product/06_apparel_6.jpg', // Apparel 6
+    'images/photo/product/07_apparel_7.jpg', // Apparel 7
+    'images/photo/product/08_apparel_8.jpg', // Apparel 8
+    'images/photo/product/09_arm_sleeve.png', // Arm Sleeve
+    'images/photo/product/10_engagement_ring.webp', // Engagement Ring
+    'images/photo/product/11_pantyhose.png', // Pantyhose
+    'images/photo/product/12_studio_concept_1.webp', // Studio Concept 1
+    'images/photo/product/13_studio_concept_2.webp', // Studio Concept 2
+    'images/photo/product/14_studio_concept_3.webp', // Studio Concept 3
+    'images/photo/product/15_retail_studio_1.webp', // Retail Studio 1
+    'images/photo/product/16_retail_studio_2.webp', // Retail Studio 2
+    'images/photo/product/17_retail_studio_3.webp', // Retail Studio 3
+    'images/photo/product/18_thermo_1.webp', // Thermo 1
+    'images/photo/product/19_thermo_2.webp', // Thermo 2
+    'images/photo/product/20_thermo_3.webp', // Thermo 3
+    'images/photo/portrait_skincare/01_hani_1.webp', // Hani 1
+    'images/photo/portrait_skincare/02_hani_2.webp', // Hani 2
+    'images/photo/portrait_skincare/03_hani_3.webp', // Hani 3
+    'images/photo/portrait_skincare/04_heather_1.webp', // Heather 1
+    'images/photo/portrait_skincare/05_heather_2.webp', // Heather 2
+    'images/photo/portrait_skincare/06_heather_3.webp', // Heather 3
+    'images/photo/portrait_sushi/01_heather_sushi_1.webp', // Heather Sushi 1
+    'images/photo/portrait_sushi/02_heather_sushi_2.webp', // Heather Sushi 2
+    'images/photo/portrait_sushi/03_jeremy_and_hani_sushi.webp', // Jeremy & Hani Sushi
 
     // Video Production — Stills / Posters (10)
-    'https://www.genspark.ai/api/files/s/Yi5xqCBI', // Cars And Hoops
-    'https://www.genspark.ai/api/files/s/Jnd0hdTD', // DL Acro 1
-    'https://www.genspark.ai/api/files/s/tWPKsFss', // DL Acro 2
-    'https://www.genspark.ai/api/files/s/LQ2uKYjv', // F Diary Perfume
-    'https://www.genspark.ai/api/files/s/8CE5pvxK', // Hanyang Industrial
-    'https://www.genspark.ai/api/files/s/zSrfbM1O', // MCST KOCCA Wild VR
-    'https://www.genspark.ai/api/files/s/9QS2fsvd', // MCST Asean Doc
-    'https://www.genspark.ai/api/files/s/1ikb4TIV', // Once Upon Shine Gala
-    'https://www.genspark.ai/api/files/s/fhRWWxrV', // Fashion Film 1
-    'https://www.genspark.ai/api/files/s/KedwCBN6', // Fashion Film 2
+    'images/video/03_cars_and_hoops.webp', // Cars And Hoops
+    'images/video/04_dl_acro_1.webp', // DL Acro 1
+    'images/video/05_dl_acro_2.png', // DL Acro 2
+    'images/video/06_f_diary_perfume.webp', // F Diary Perfume
+    'images/video/07_hanyang_industrial.webp', // Hanyang Industrial
+    'images/video/08_mcst_kocca_wild_vr.jpg', // MCST KOCCA Wild VR
+    'images/video/09_mcst_asean_doc.webp', // MCST Asean Doc
+    'images/video/10_once_upon_shine_gala.webp', // Once Upon Shine Gala
+    'images/video/fashion_film_1_thumb.jpg', // Fashion Film 1
+    'images/video/fashion_film_2_thumb.jpg', // Fashion Film 2
   ];
 
   /* ============================================================
