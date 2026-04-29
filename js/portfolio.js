@@ -219,32 +219,32 @@
       client: 'Korea Tourism',
       service: 'Social Media Campaign'
     },
-    'Food Burger': {
+    'Stacked & Stylish': {
       desc: 'Mouth-watering burger photography styled to highlight texture, freshness, and craftsmanship — from the toasted sesame bun to the crisp lettuce and house-made patty. Captured under controlled studio lighting to make every detail pop on menus, social feeds, and delivery platforms.',
       client: 'Restaurant Client',
       service: 'Food Photography'
     },
-    'Chicken Wing': {
+    'Saucy Hour': {
       desc: 'Bold, appetite-driving food photography featuring saucy chicken wings styled with garnish and glaze. Shot to emphasize sheen, color, and movement — engineered to perform across Instagram, Uber Eats, and DoorDash listings.',
       client: 'Restaurant Client',
       service: 'Food Photography'
     },
-    'Apparel 1': {
+    'Quiet Tones': {
       desc: 'Editorial-style apparel photography featuring clean lines, soft neutral tones, and considered composition. Shot in-studio for a fashion brand campaign — designed to elevate product detail across e-commerce, lookbooks, and paid social.',
       client: 'Apparel Brand',
       service: 'Product Photography'
     },
-    'Studio Concept 1': {
+    'Pop & Pour': {
       desc: 'Concept-driven product photography for a wellness supplement brand, blending bold color blocking with playful prop styling. Shot to communicate brand personality and ingredient story across packaging, Amazon listings, and digital ad creative.',
       client: 'Wellness Brand',
       service: 'Product Photography'
     },
-    'Heather 1': {
+    'Soft Light, Slow Mornings': {
       desc: 'Wellness and spa lifestyle photography capturing calm, restorative moments through soft natural light and warm tones. Produced for a medical spa to bring authenticity and emotional connection to brand storytelling, treatment menus, and digital touchpoints.',
       client: 'Medical Spa',
       service: 'Lifestyle Photography'
     },
-    'Jeremy And Hani Sushi': {
+    'Table for Two': {
       desc: 'Restaurant lifestyle photography featuring real guests enjoying an authentic dining moment. Captured in-venue to showcase atmosphere, hospitality, and the human side of the brand — perfect for website hero images, social storytelling, and PR campaigns.',
       client: 'Sushi Restaurant',
       service: 'Lifestyle Photography'
