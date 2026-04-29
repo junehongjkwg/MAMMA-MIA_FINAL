@@ -190,35 +190,41 @@
       service: 'Promotional Poster Design'
     },
     'SeoulGift - Campaign & Digital Content': {
-      desc: 'Brand launch video for Seoul Gift’s Korean snack box introducing the product and brand concept.',
+      desc: 'Brand launch reel and digital content suite for a Korean snack box launch — built to drive awareness, follower growth, and DTC conversion.',
       client: 'SeoulGift',
       service: 'Campaign Film'
     },
+    
     'Brunch Café - Social Media Campaign': {
-      desc: 'Opening campaign film created to introduce the launch of a brunch café.',
+      desc: 'Multi-asset social campaign supporting the launch of a new brunch café — positioning, opening teasers, signature menu reels, and post-opening content waves.',
       client: 'Brunch Café',
       service: 'Social Media Campaign'
     },
+    
     'Bar & Lounge - Digital Content': {
-      desc: 'A short-form Reels video showcasing a range of cocktails through clean visuals and engaging content.',
+      desc: 'Signature cocktail reel series styled for lounge atmosphere — short-form video built for Instagram Reels, TikTok, and reservation-driving paid social.',
       client: 'Bar & Lounge',
       service: 'Reels Production'
     },
+    
     'Golf Course - Seasonal Campaign Content': {
-      desc: 'Seasonal announcement content created to promote the reopening of the venue through calm outdoor imagery and a welcoming brand message.',
+      desc: 'Seasonal venue content series capturing course atmosphere, member moments, and branded moments — engineered for paid acquisition and member retention.',
       client: 'Golf Course',
-      service: 'Social Media Campaign'
+      service: 'Seasonal Campaign Content'
     },
+    
     'Fashion Week - Digital Content': {
-      desc: 'Social media content designed to capture the energy of runway shows, casting calls, and designer announcements through bold editorial layouts.',
+      desc: 'Editorial card-news series covering Fashion Week moments — built for slow scroll, save-rate, and brand-aligned cultural narrative.',
       client: 'Fashion Week',
-      service: 'Social Media Marketing'
+      service: 'Editorial Card News'
     },
+    
     'Korea Tourism - Campaign & Digital Content': {
-      desc: 'Travel-focused social media content curated to promote seasonal destinations, scenic spots, and regional experiences across Korea.',
+      desc: 'Multi-format tourism campaign blending card-news, reels, and editorial visuals — engineered to drive 1M+ reach and inbound interest in Korean destinations.',
       client: 'Korea Tourism',
-      service: 'Social Media Campaign'
+      service: 'Editorial Card News'
     },
+    
     'Stacked & Stylish': {
       desc: 'Mouth-watering burger photography styled to highlight texture, freshness, and craftsmanship — from the toasted sesame bun to the crisp lettuce and house-made patty. Captured under controlled studio lighting to make every detail pop on menus, social feeds, and delivery platforms.',
       client: 'Restaurant Client',
