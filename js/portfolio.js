@@ -159,28 +159,129 @@
 
   // Sample project data
   const projectData = {
-    'Pacific Rim Restaurant — Instagram Campaign': {
-      desc: 'A multi-month Instagram content strategy featuring original photography, curated Reels, and a hashtag growth system. Increased follower count by 340% in 90 days.',
-      client: 'Pacific Rim Restaurant',
-      year: '2024',
-      service: 'Social Media Marketing'
-    },
-    'Hana Skincare — Complete Brand Identity': {
-      desc: 'Full visual identity package including logo system, color palette, typography guide, business card, and social media templates for a clean-beauty skincare launch.',
-      client: 'Hana Skincare',
-      year: '2024',
+    'Anthracite - Complete Brand Identity': {
+      desc: 'Full visual identity package including logo system, color palette, typography guide, business card, and social media templates for a contemporary cafe identity.',
+      client: 'Anthracite',
       service: 'Branding'
     },
-    'Vancouver Night Market — Event Coverage Film': {
-      desc: "Multi-angle event highlight film for one of Vancouver's biggest summer events. Delivered a 3-minute recap reel and social-cut content within 48 hours of the event.",
-      client: 'Vancouver Night Market',
-      year: '2024',
-      service: 'Video Production'
+    'IL FORNO - Complete Brand Identity': {
+      desc: 'Comprehensive brand identity package including logo design, color palette, typography, menu design, business cards, website, and environmental branding developed for a refined Italian restaurant brand.',
+      client: 'IL FORNO',
+      service: 'Branding'
+    },
+    'EL MOLINO - Complete Brand Identity': {
+      desc: 'A full branding system for a refined restaurant, encompassing visual identity, print materials, digital touchpoints, and a custom brand deck developed to define the brand’s tone and direction.',
+      client: 'EL MOLINO',
+      service: 'Branding'
+    },
+    'La Foret - Brand Performance Analysis': {
+      desc: 'Brand tracking analysis of La Forêt, focusing on content direction, visual consistency, and audience engagement to identify key brand patterns and positioning opportunities.',
+      client: 'La Foret',
+      service: 'Brand Analysis'
+    },
+    'NICHE - Seasonal Promo': {
+      desc: 'Campaign poster design for a holiday promotion and event.',
+      client: 'NICHE',
+      service: 'Promotional Poster Design'
+    },
+    'Brunch Restaurant - Uber Eats Promotion': {
+      desc: 'Digital promotional assets created for an Uber Eats campaign.',
+      client: 'Brunch Restaurant',
+      service: 'Promotional Poster Design'
+    },
+    'SeoulGift - Campaign & Digital Content': {
+      desc: 'Brand launch video for Seoul Gift’s Korean snack box introducing the product and brand concept.',
+      client: 'SeoulGift',
+      service: 'Campaign Film'
+    },
+    'Brunch Café - Social Media Campaign': {
+      desc: 'Opening campaign film created to introduce the launch of a brunch café.',
+      client: 'Brunch Café',
+      service: 'Social Media Campaign'
+    },
+    'Bar & Lounge - Digital Content': {
+      desc: 'A short-form Reels video showcasing a range of cocktails through clean visuals and engaging content.',
+      client: 'Bar & Lounge',
+      service: 'Reels Production'
+    },
+    'Golf Course - Seasonal Campaign Content': {
+      desc: 'Seasonal announcement content created to promote the reopening of the venue through calm outdoor imagery and a welcoming brand message.',
+      client: 'Golf Course',
+      service: 'Social Media Campaign'
+    },
+    'Fashion Week - Digital Content': {
+      desc: 'Social media content designed to capture the energy of runway shows, casting calls, and designer announcements through bold editorial layouts.',
+      client: 'Fashion Week',
+      service: 'Social Media Marketing'
+    },
+    'Korea Tourism - Campaign & Digital Content': {
+      desc: 'Travel-focused social media content curated to promote seasonal destinations, scenic spots, and regional experiences across Korea.',
+      client: 'Korea Tourism',
+      service: 'Social Media Campaign'
+    },
+    'Food Burger': {
+      desc: 'Restaurant food photography crafted to drive conversion — every frame styled to make the menu look as good as it tastes.',
+      client: 'MAMMA MIA Client',
+      service: 'Food Photography'
+    },
+    'Chicken Wing': {
+      desc: 'Restaurant food photography crafted to drive conversion — every frame styled to make the menu look as good as it tastes.',
+      client: 'MAMMA MIA Client',
+      service: 'Food Photography'
+    },
+    'Apparel 1': {
+      desc: 'Product and apparel photography produced in-studio and on-location, designed to elevate the brand story across e-commerce and editorial.',
+      client: 'MAMMA MIA Client',
+      service: 'Product Photography'
+    },
+    'Studio Concept 1': {
+      desc: 'Product and apparel photography produced in-studio and on-location, designed to elevate the brand story across e-commerce and editorial.',
+      client: 'MAMMA MIA Client',
+      service: 'Product Photography'
+    },
+    'Heather 1': {
+      desc: 'Beauty and skincare portrait photography focused on clean light, natural skin texture, and editorial framing for medical spa and wellness brands.',
+      client: 'MAMMA MIA Client',
+      service: 'Portrait Photography'
+    },
+    'Jeremy And Hani Sushi': {
+      desc: 'Restaurant portrait photography combining chef and brand storytelling — capturing craft, hospitality, and the personality behind the menu.',
+      client: 'MAMMA MIA Client',
+      service: 'Portrait Photography'
+    },
+    'DL ACRO - Brand Campaign Film': {
+      desc: 'Brand campaign film introducing ACRO\'s landmark value through panoramic city visuals, premium composition, and a strong sense of place.',
+      client: 'DL ACRO',
+      service: 'Brand Campaign Film'
+    },
+    'F Diary Perfume - Beauty Campaign Film': {
+      desc: 'Beauty campaign film built around clean portraiture and soft, luminous visuals to emphasize the elegance and mood of the perfume product.',
+      client: 'F Diary',
+      service: 'Beauty Campaign Film'
+    },
+    'Hanyang - Corporate Brand Film': {
+      desc: 'Corporate brand film using cinematic cityscape and infrastructure footage to highlight scale, connectivity, and the brand\'s urban presence.',
+      client: 'Hanyang',
+      service: 'Corporate Brand Film'
+    },
+    'MCST x KOCCA - Wild VR Content': {
+      desc: 'Government-supported promotional content showcasing an immersive outdoor VR experience through energetic action footage and a strong sense of adventure.',
+      client: 'MCST x KOCCA',
+      service: 'Branded Content / Experiential Video'
+    },
+    'MCST - ASEAN Documentary': {
+      desc: 'Documentary-style content capturing the landscape, heritage, and atmosphere of ASEAN cultural destinations through wide cinematic travel footage.',
+      client: 'MCST',
+      service: 'Documentary Film'
+    },
+    'Fashion Film - In Parallel I': {
+      desc: 'Editorial fashion film introducing the collection through structured compositions, architectural backdrops, and a refined luxury mood.',
+      client: 'Apparel Brand',
+      service: 'Fashion Film'
     },
     default: {
       desc: 'A carefully crafted project built to drive measurable results for our client. Reach out to learn more about how we can replicate similar success for your brand.',
       client: 'MAMMA MIA Client',
-      year: '2024',
       service: 'Full Service'
     }
   };
@@ -205,10 +306,6 @@
         <div class="port-modal__meta-item">
           <span class="port-modal__meta-label">Client</span>
           <span class="port-modal__meta-value">${data.client}</span>
-        </div>
-        <div class="port-modal__meta-item">
-          <span class="port-modal__meta-label">Year</span>
-          <span class="port-modal__meta-value">${data.year}</span>
         </div>
         <div class="port-modal__meta-item">
           <span class="port-modal__meta-label">Service</span>
