@@ -434,7 +434,7 @@
           <p class="footer__col-title">Contact</p>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Email</p>
-            <a href="/cdn-cgi/l/email-protection#cba2a5babea2b9b2e5a6aaa6a6aaa6a2aa8baca6aaa2a7e5a8a4a6" class="footer__contact-value footer__col-link"><span class="__cf_email__" data-cfemail="690007181c001b10470408040408040008290e04080005470a0604">[email&#160;protected]</span></a>
+            <a href="#" class="footer__contact-value footer__col-link js-email" data-user="inquiry.mammamia" data-domain="gmail.com" rel="nofollow"><span class="js-email-text">Loading...</span></a>
           </div>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Address</p>
@@ -458,7 +458,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/portfolio.js"></script>
   <script>
     /* ────────────────────────────────────────────
@@ -532,6 +532,21 @@
       });
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+  </script>
+  <script>
+    /* Email assembler — bypasses Cloudflare email obfuscation by composing the
+       address client-side from data-* attributes (no raw "mailto:" or full
+       address present in source HTML). */
+    (function () {
+      var els = document.querySelectorAll('a.js-email[data-user][data-domain]');
+      els.forEach(function (a) {
+        var addr = a.getAttribute('data-user') + '@' + a.getAttribute('data-domain');
+        a.setAttribute('href', 'mailto:' + addr);
+        var span = a.querySelector('.js-email-text');
+        if (span) span.textContent = addr;
+        else a.textContent = addr;
       });
     })();
   </script>

@@ -419,7 +419,7 @@
           <p class="footer__col-title">Contact</p>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Email</p>
-            <a href="/cdn-cgi/l/email-protection#4a23243b3f23383364272b27272b27232b0a2d272b232664292527" class="footer__contact-value footer__col-link"><span class="__cf_email__" data-cfemail="3f56514e4a564d4611525e52525e52565e7f58525e5653115c5052">[email&#160;protected]</span></a>
+            <a href="#" class="footer__contact-value footer__col-link js-email" data-user="inquiry.mammamia" data-domain="gmail.com" rel="nofollow"><span class="js-email-text">Loading...</span></a>
           </div>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Address</p>
@@ -443,7 +443,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/portfolio.js"></script>
   <script>
     // Reveal animation on scroll for masonry items
@@ -467,6 +467,21 @@
       items.forEach(el => io.observe(el));
     })();
   </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+  <script>
+    /* Email assembler — bypasses Cloudflare email obfuscation by composing the
+       address client-side from data-* attributes (no raw "mailto:" or full
+       address present in source HTML). */
+    (function () {
+      var els = document.querySelectorAll('a.js-email[data-user][data-domain]');
+      els.forEach(function (a) {
+        var addr = a.getAttribute('data-user') + '@' + a.getAttribute('data-domain');
+        a.setAttribute('href', 'mailto:' + addr);
+        var span = a.querySelector('.js-email-text');
+        if (span) span.textContent = addr;
+        else a.textContent = addr;
+      });
+    })();
+  </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9f3bd05a7eb8d325","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>

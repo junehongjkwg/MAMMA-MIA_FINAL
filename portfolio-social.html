@@ -455,7 +455,7 @@
           <p class="footer__col-title">Contact</p>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Email</p>
-            <a href="/cdn-cgi/l/email-protection#335a5d42465a414a1d5e525e5e525e5a5273545e525a5f1d505c5e" class="footer__contact-value footer__col-link"><span class="__cf_email__" data-cfemail="0f66617e7a667d7621626e62626e62666e4f68626e6663216c6062">[email&#160;protected]</span></a>
+            <a href="#" class="footer__contact-value footer__col-link js-email" data-user="inquiry.mammamia" data-domain="gmail.com" rel="nofollow"><span class="js-email-text">Loading...</span></a>
           </div>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Address</p>
@@ -479,7 +479,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/portfolio.js"></script>
   <script>
     /* ────────────────────────────────────────────
@@ -590,6 +590,21 @@
       lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      });
+    })();
+  </script>
+  <script>
+    /* Email assembler — bypasses Cloudflare email obfuscation by composing the
+       address client-side from data-* attributes (no raw "mailto:" or full
+       address present in source HTML). */
+    (function () {
+      var els = document.querySelectorAll('a.js-email[data-user][data-domain]');
+      els.forEach(function (a) {
+        var addr = a.getAttribute('data-user') + '@' + a.getAttribute('data-domain');
+        a.setAttribute('href', 'mailto:' + addr);
+        var span = a.querySelector('.js-email-text');
+        if (span) span.textContent = addr;
+        else a.textContent = addr;
       });
     })();
   </script>
