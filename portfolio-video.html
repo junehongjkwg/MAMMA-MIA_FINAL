@@ -11,6 +11,25 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/portfolio.css" />
   <link rel="stylesheet" href="css/video-cinema.css" />
+<!-- __filter-bar-dark-injected__ -->
+  <style>
+    /* Filter bar — white text for dark hero pages (Video / Social) */
+    .filter-bar { background: transparent; }
+    .filter-bar__inner { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .filter-btn {
+      color: rgba(255,255,255,0.55) !important;
+      transition: color 0.25s ease, border-color 0.25s ease;
+      border-bottom: 2px solid transparent;
+    }
+    .filter-btn:hover,
+    .filter-btn:focus {
+      color: #ffffff !important;
+    }
+    .filter-btn.active {
+      color: #ffffff !important;
+      border-bottom-color: var(--color-accent, #2a3bff);
+    }
+  </style>
 </head>
 <body class="video-page">
 
