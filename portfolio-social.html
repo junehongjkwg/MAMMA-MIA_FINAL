@@ -11,6 +11,37 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/portfolio.css" />
   <link rel="stylesheet" href="css/social-reels.css" />
+<!-- __cardnews-always-visible-injected__ -->
+  <style>
+    /* Section 02 — Card News: always-visible title bar (matches Reels Section 01) */
+    .cardnews-item { position: relative; overflow: hidden; }
+    .cardnews-item__overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0) 100%);
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .cardnews-item__title {
+      color: #ffffff;
+      font-family: "Bebas Neue", "Inter", sans-serif;
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin: 0;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+    }
+    /* Slight zoom on hover, but title always shown */
+    .cardnews-item:hover .cardnews-item__img { transform: scale(1.04); }
+    .cardnews-item__img { transition: transform 0.5s ease; }
+  </style>
 </head>
 <body>
 
