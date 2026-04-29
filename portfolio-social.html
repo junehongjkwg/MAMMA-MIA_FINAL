@@ -518,7 +518,7 @@
         if (!vimeoId) return;
         const src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
         iframeWrap.innerHTML =
-          `<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+          `<iframe src="${src}" title="Reel video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
         captionEl.textContent = title || '';
         modal.classList.add('is-open');
         document.body.classList.add('modal-open');
