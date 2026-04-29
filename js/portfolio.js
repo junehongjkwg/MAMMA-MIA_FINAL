@@ -220,34 +220,34 @@
       service: 'Social Media Campaign'
     },
     'Food Burger': {
-      desc: 'Restaurant food photography crafted to drive conversion — every frame styled to make the menu look as good as it tastes.',
-      client: 'MAMMA MIA Client',
+      desc: 'Mouth-watering burger photography styled to highlight texture, freshness, and craftsmanship — from the toasted sesame bun to the crisp lettuce and house-made patty. Captured under controlled studio lighting to make every detail pop on menus, social feeds, and delivery platforms.',
+      client: 'Restaurant Client',
       service: 'Food Photography'
     },
     'Chicken Wing': {
-      desc: 'Restaurant food photography crafted to drive conversion — every frame styled to make the menu look as good as it tastes.',
-      client: 'MAMMA MIA Client',
+      desc: 'Bold, appetite-driving food photography featuring saucy chicken wings styled with garnish and glaze. Shot to emphasize sheen, color, and movement — engineered to perform across Instagram, Uber Eats, and DoorDash listings.',
+      client: 'Restaurant Client',
       service: 'Food Photography'
     },
     'Apparel 1': {
-      desc: 'Product and apparel photography produced in-studio and on-location, designed to elevate the brand story across e-commerce and editorial.',
-      client: 'MAMMA MIA Client',
+      desc: 'Editorial-style apparel photography featuring clean lines, soft neutral tones, and considered composition. Shot in-studio for a fashion brand campaign — designed to elevate product detail across e-commerce, lookbooks, and paid social.',
+      client: 'Apparel Brand',
       service: 'Product Photography'
     },
     'Studio Concept 1': {
-      desc: 'Product and apparel photography produced in-studio and on-location, designed to elevate the brand story across e-commerce and editorial.',
-      client: 'MAMMA MIA Client',
+      desc: 'Concept-driven product photography for a wellness supplement brand, blending bold color blocking with playful prop styling. Shot to communicate brand personality and ingredient story across packaging, Amazon listings, and digital ad creative.',
+      client: 'Wellness Brand',
       service: 'Product Photography'
     },
     'Heather 1': {
-      desc: 'Beauty and skincare portrait photography focused on clean light, natural skin texture, and editorial framing for medical spa and wellness brands.',
-      client: 'MAMMA MIA Client',
-      service: 'Portrait Photography'
+      desc: 'Wellness and spa lifestyle photography capturing calm, restorative moments through soft natural light and warm tones. Produced for a medical spa to bring authenticity and emotional connection to brand storytelling, treatment menus, and digital touchpoints.',
+      client: 'Medical Spa',
+      service: 'Lifestyle Photography'
     },
     'Jeremy And Hani Sushi': {
-      desc: 'Restaurant portrait photography combining chef and brand storytelling — capturing craft, hospitality, and the personality behind the menu.',
-      client: 'MAMMA MIA Client',
-      service: 'Portrait Photography'
+      desc: 'Restaurant lifestyle photography featuring real guests enjoying an authentic dining moment. Captured in-venue to showcase atmosphere, hospitality, and the human side of the brand — perfect for website hero images, social storytelling, and PR campaigns.',
+      client: 'Sushi Restaurant',
+      service: 'Lifestyle Photography'
     },
     'DL ACRO - Brand Campaign Film': {
       desc: 'Brand campaign film introducing ACRO\'s landmark value through panoramic city visuals, premium composition, and a strong sense of place.',
