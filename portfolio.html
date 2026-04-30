@@ -29,6 +29,209 @@
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
   </style>
+
+  <style>
+    /* ============================================
+       MAMMA MIA — Promo Components
+       Floating Badge + Solid Blue Promo Bar
+       ============================================ */
+
+    /* ---------- Promo Bar (Solid Blue) ---------- */
+    .promo-bar {
+      width: 100%;
+      background: var(--color-accent, #2a3bff);
+      color: #fff;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      overflow: hidden;
+      position: relative;
+    }
+    .promo-bar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+      animation: promoShimmer 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes promoShimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    .promo-bar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px 24px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      max-width: var(--max-width, 1440px);
+      margin: 0 auto;
+    }
+    .promo-bar__tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.30);
+      color: #fff;
+      white-space: nowrap;
+    }
+    .promo-bar__text {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #fff;
+      line-height: 1.4;
+      text-align: center;
+    }
+    .promo-bar__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.45);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .promo-bar__link:hover {
+      background: rgba(255,255,255,0.12);
+      border-bottom-color: #fff;
+      transform: translateX(2px);
+    }
+    .promo-bar__link svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+    .promo-bar__link:hover svg {
+      transform: translateX(3px);
+    }
+    @media (max-width: 900px) {
+      .promo-bar__inner { gap: 14px; padding: 12px 20px; }
+      .promo-bar__text { font-size: 12.5px; }
+    }
+    @media (max-width: 640px) {
+      .promo-bar__inner { flex-direction: column; gap: 10px; padding: 14px 20px; text-align: center; }
+      .promo-bar__text { font-size: 12.5px; max-width: 360px; }
+      .promo-bar__tag { font-size: 9.5px; padding: 4px 10px; }
+    }
+
+    /* ---------- Floating Badge ---------- */
+    .floating-promo {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9998;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: var(--color-accent, #2a3bff);
+      color: #fff;
+      box-shadow: 0 8px 28px rgba(42, 59, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      animation: floatPulse 3s ease-in-out infinite, floatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.85); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes floatPulse {
+      0%, 100% { box-shadow: 0 8px 28px rgba(42, 59, 255, 0.35), 0 0 0 0 rgba(42, 59, 255, 0.55); }
+      50% { box-shadow: 0 8px 28px rgba(42, 59, 255, 0.35), 0 0 0 10px rgba(42, 59, 255, 0); }
+    }
+    .floating-promo:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(42, 59, 255, 0.45);
+    }
+    .floating-promo.floating-promo--hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.85);
+      transition: all 0.3s ease;
+    }
+    .floating-promo__main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px 12px 16px;
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .floating-promo__star {
+      font-size: 13px;
+      line-height: 1;
+      animation: starSpin 4s linear infinite;
+      display: inline-block;
+    }
+    @keyframes starSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .floating-promo__close {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.18);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+    .floating-promo__close:hover {
+      background: rgba(0, 0, 0, 0.32);
+    }
+    .floating-promo__close svg {
+      width: 12px;
+      height: 12px;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+    @media (max-width: 640px) {
+      .floating-promo {
+        bottom: 16px;
+        right: 16px;
+      }
+      .floating-promo__main {
+        padding: 10px 14px 10px 14px;
+        font-size: 11px;
+      }
+      .floating-promo__close {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  
+    /* Extra spacing below promo bar before main content */
+    .promo-bar--with-gap { margin-bottom: clamp(40px, 6vw, 80px); }
+</style>
 </head>
 <body>
 
@@ -188,7 +391,20 @@
         </div>
       </section>
 
-      <section class="overview-section" data-cat="social">
+      
+  <!-- ======== Promo Bar — Limited-Time Offer ======== -->
+  <div class="promo-bar promo-bar--with-gap" role="region" aria-label="Limited-Time Offer">
+    <div class="promo-bar__inner">
+      <span class="promo-bar__tag">Limited-Time Offer</span>
+      <span class="promo-bar__text">Special Pricing Through September. Get in Touch to Learn More.</span>
+      <a href="contact.html" class="promo-bar__link">
+        <span>Inquire Now</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <section class="overview-section" data-cat="social">
         <div class="overview-section__head">
           <span class="t-label">Social Media Marketing</span>
           <a href="portfolio-social.html" class="overview-section__view-all btn-arrow">View All Social Media Marketing <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -509,6 +725,35 @@
       });
     })();
   </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+
+  <!-- ======== Floating Promo Badge ======== -->
+  <div class="floating-promo" id="floatingPromo">
+    <a href="contact.html" class="floating-promo__main">
+      <span class="floating-promo__star">★</span>
+      <span>Limited Offer</span>
+    </a>
+    <button type="button" class="floating-promo__close" id="floatingPromoClose" aria-label="Close promotional offer">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4 L12 12 M12 4 L4 12" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <script>
+    (function () {
+      var promo = document.getElementById('floatingPromo');
+      var closeBtn = document.getElementById('floatingPromoClose');
+      if (!promo || !closeBtn) return;
+      try {
+        if (sessionStorage.getItem('floatingPromoClosed') === '1') {
+          promo.classList.add('floating-promo--hidden');
+        }
+      } catch (e) {}
+      closeBtn.addEventListener('click', function () {
+        promo.classList.add('floating-promo--hidden');
+        try { sessionStorage.setItem('floatingPromoClosed', '1'); } catch (e) {}
+      });
+    })();
+  </script>
+
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

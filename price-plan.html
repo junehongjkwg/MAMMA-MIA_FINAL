@@ -10,6 +10,206 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/pricing.css" />
+
+  <style>
+    /* ============================================
+       MAMMA MIA — Promo Components
+       Floating Badge + Solid Blue Promo Bar
+       ============================================ */
+
+    /* ---------- Promo Bar (Solid Blue) ---------- */
+    .promo-bar {
+      width: 100%;
+      background: var(--color-accent, #2a3bff);
+      color: #fff;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      overflow: hidden;
+      position: relative;
+    }
+    .promo-bar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+      animation: promoShimmer 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes promoShimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    .promo-bar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px 24px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      max-width: var(--max-width, 1440px);
+      margin: 0 auto;
+    }
+    .promo-bar__tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.30);
+      color: #fff;
+      white-space: nowrap;
+    }
+    .promo-bar__text {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #fff;
+      line-height: 1.4;
+      text-align: center;
+    }
+    .promo-bar__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.45);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .promo-bar__link:hover {
+      background: rgba(255,255,255,0.12);
+      border-bottom-color: #fff;
+      transform: translateX(2px);
+    }
+    .promo-bar__link svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.2s ease;
+    }
+    .promo-bar__link:hover svg {
+      transform: translateX(3px);
+    }
+    @media (max-width: 900px) {
+      .promo-bar__inner { gap: 14px; padding: 12px 20px; }
+      .promo-bar__text { font-size: 12.5px; }
+    }
+    @media (max-width: 640px) {
+      .promo-bar__inner { flex-direction: column; gap: 10px; padding: 14px 20px; text-align: center; }
+      .promo-bar__text { font-size: 12.5px; max-width: 360px; }
+      .promo-bar__tag { font-size: 9.5px; padding: 4px 10px; }
+    }
+
+    /* ---------- Floating Badge ---------- */
+    .floating-promo {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9998;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: var(--color-accent, #2a3bff);
+      color: #fff;
+      box-shadow: 0 8px 28px rgba(42, 59, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      animation: floatPulse 3s ease-in-out infinite, floatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.85); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes floatPulse {
+      0%, 100% { box-shadow: 0 8px 28px rgba(42, 59, 255, 0.35), 0 0 0 0 rgba(42, 59, 255, 0.55); }
+      50% { box-shadow: 0 8px 28px rgba(42, 59, 255, 0.35), 0 0 0 10px rgba(42, 59, 255, 0); }
+    }
+    .floating-promo:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(42, 59, 255, 0.45);
+    }
+    .floating-promo.floating-promo--hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.85);
+      transition: all 0.3s ease;
+    }
+    .floating-promo__main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px 12px 16px;
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .floating-promo__star {
+      font-size: 13px;
+      line-height: 1;
+      animation: starSpin 4s linear infinite;
+      display: inline-block;
+    }
+    @keyframes starSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .floating-promo__close {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.18);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+    .floating-promo__close:hover {
+      background: rgba(0, 0, 0, 0.32);
+    }
+    .floating-promo__close svg {
+      width: 12px;
+      height: 12px;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+    @media (max-width: 640px) {
+      .floating-promo {
+        bottom: 16px;
+        right: 16px;
+      }
+      .floating-promo__main {
+        padding: 10px 14px 10px 14px;
+        font-size: 11px;
+      }
+      .floating-promo__close {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -80,6 +280,18 @@
     </div>
   </header>
 
+  <!-- ======== Promo Bar — Limited-Time Offer ======== -->
+  <div class="promo-bar" role="region" aria-label="Limited-Time Offer">
+    <div class="promo-bar__inner">
+      <span class="promo-bar__tag">Limited-Time Offer</span>
+      <span class="promo-bar__text">Special Pricing Through September. Get in Touch to Learn More.</span>
+      <a href="contact.html" class="promo-bar__link">
+        <span>Inquire Now</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+
   <!-- ======== BRANDING ======== -->
   <section class="pricing-section section branding-v3" id="branding">
 
@@ -89,14 +301,14 @@
         <div class="branding-v3__head-left">
           <span class="t-label reveal">Branding</span>
           <h2 class="branding-v3__title reveal reveal-delay-1">Building Brands<br />That Get <em>Chosen.</em></h2>
-          <p class="t-body branding-v3__sub reveal reveal-delay-2">Every touchpoint of your visual identity — crafted with strategy and designed to last. Scope is always tailored to your ambitions.</p>
+          <p class="t-body branding-v3__sub reveal reveal-delay-2">Visual content across every touchpoint, tailored to your brand and goals.</p>
         </div>
         <div class="branding-v3__head-right reveal reveal-delay-1">
           <div class="branding-v3__price-block">
             <span class="branding-v3__price-label t-label">Starting From</span>
             <div class="branding-v3__price-row">
               <span class="branding-v3__price-cad">CAD</span>
-              <span class="branding-v3__price-num">3,200</span>
+              <span class="branding-v3__price-num">4,300</span>
               <span class="branding-v3__price-tilde">~</span>
             </div>
             <p class="branding-v3__price-note">Varies by scope &amp; objectives</p>
@@ -165,25 +377,11 @@
             <span class="branding-v3__card-num">04</span>
           </div>
           <div class="branding-v3__card-tag">F&amp;B</div>
-          <h3 class="branding-v3__card-title">Restaurant Menu Design</h3>
-          <p class="branding-v3__card-desc">Menus that reflect your brand story, guide decisions, and drive higher order value.</p>
+          <h3 class="branding-v3__card-title">Service &amp; Pricing Design</h3>
+          <p class="branding-v3__card-desc">Service menus and pricing layouts that reflect your brand and guide customer decisions.</p>
         </div>
 
         <div class="branding-v3__card reveal reveal-delay-2">
-          <div class="branding-v3__card-top">
-            <svg class="branding-v3__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 4 h18 l8 8 v24 H8 Z" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M26 4 v8 h8" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 18 h12M14 22 h10M14 26 h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="branding-v3__card-num">05</span>
-          </div>
-          <div class="branding-v3__card-tag">Print</div>
-          <h3 class="branding-v3__card-title">Brochure &amp; Booklet</h3>
-          <p class="branding-v3__card-desc">Multi-page materials that tell your brand's full story in a way people actually keep.</p>
-        </div>
-
-        <div class="branding-v3__card reveal reveal-delay-3">
           <div class="branding-v3__card-top">
             <svg class="branding-v3__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="5" y="7" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -191,11 +389,25 @@
               <path d="M14 33 h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               <path d="M20 29 v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <span class="branding-v3__card-num">06</span>
+            <span class="branding-v3__card-num">05</span>
           </div>
           <div class="branding-v3__card-tag">Digital</div>
           <h3 class="branding-v3__card-title">Social Media Setup</h3>
           <p class="branding-v3__card-desc">Branded profiles, post templates, and visual guidelines — ready to publish from day one.</p>
+        </div>
+
+        <div class="branding-v3__card reveal reveal-delay-3">
+          <div class="branding-v3__card-top">
+            <svg class="branding-v3__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 4 h18 l8 8 v24 H8 Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M26 4 v8 h8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 18 h12M14 22 h10M14 26 h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="branding-v3__card-num">06</span>
+          </div>
+          <div class="branding-v3__card-tag">System</div>
+          <h3 class="branding-v3__card-title">Social Media Guidelines</h3>
+          <p class="branding-v3__card-desc">A clear visual playbook keeping your brand consistent across every channel and post.</p>
         </div>
 
       </div>
@@ -213,7 +425,6 @@
             <li><span class="branding-v3__audit-check">→</span>Brand Positioning Analysis</li>
             <li><span class="branding-v3__audit-check">→</span>Competitor Landscape Review</li>
             <li><span class="branding-v3__audit-check">→</span>Target Audience Definition</li>
-            <li><span class="branding-v3__audit-check">→</span>Visual Direction Brief</li>
           </ul>
           <a href="contact.html" class="btn btn-outline branding-v3__audit-cta"><span>Start Your Brand</span></a>
         </div>
@@ -231,11 +442,12 @@
       </div>
       <div class="pricing-cards">
 
+        <!-- Card 1 — Essential -->
         <div class="pricing-card reveal reveal-delay-1">
-          <div class="pricing-card__tier t-label">Basic</div>
+          <div class="pricing-card__tier t-label">Essential</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">1,000</span>
+            <span class="pricing-card__amount">1,300</span>
             <span class="pricing-card__period">/mo</span>
           </div>
           <div class="rule" style="margin:24px 0"></div>
@@ -247,12 +459,13 @@
           <a href="contact.html" class="btn btn-outline pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 2 — Standard (Best Value, featured dark) -->
         <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
-          <div class="pricing-card__badge t-label">Most Popular</div>
+          <div class="pricing-card__badge t-label">Best Value</div>
           <div class="pricing-card__tier t-label">Standard</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">1,500</span>
+            <span class="pricing-card__amount">1,900</span>
             <span class="pricing-card__period">/mo</span>
           </div>
           <div class="rule" style="margin:24px 0;background:rgba(255,255,255,0.12)"></div>
@@ -265,11 +478,12 @@
           <a href="contact.html" class="btn btn-primary pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 3 — Pro -->
         <div class="pricing-card reveal reveal-delay-3">
-          <div class="pricing-card__tier t-label">Premium</div>
+          <div class="pricing-card__tier t-label">Pro</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">2,000</span>
+            <span class="pricing-card__amount">2,700</span>
             <span class="pricing-card__period">/mo</span>
           </div>
           <div class="rule" style="margin:24px 0"></div>
@@ -283,11 +497,12 @@
           <a href="contact.html" class="btn btn-outline pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 4 — Elite (deep blue startup card) -->
         <div class="pricing-card pricing-card--startup reveal reveal-delay-4">
-          <div class="pricing-card__tier t-label">Start-Up</div>
+          <div class="pricing-card__tier t-label">Elite</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">3,100</span>
+            <span class="pricing-card__amount">3,600</span>
             <span class="pricing-card__period">/mo</span>
           </div>
           <div class="rule" style="margin:24px 0;background:rgba(255,255,255,0.12)"></div>
@@ -315,6 +530,7 @@
       </div>
       <div class="pricing-cards">
 
+        <!-- Card 1 — Wedding Photo $300 -->
         <div class="pricing-card reveal reveal-delay-1">
           <div class="pricing-card__tier t-label">Wedding Photo</div>
           <div class="pricing-card__price">
@@ -330,11 +546,12 @@
           <a href="contact.html" class="btn btn-outline pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 2 — Starter $900/session -->
         <div class="pricing-card reveal reveal-delay-2">
           <div class="pricing-card__tier t-label">Starter</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">500</span>
+            <span class="pricing-card__amount">900</span>
             <span class="pricing-card__period">/session</span>
           </div>
           <div class="rule" style="margin:24px 0"></div>
@@ -346,12 +563,13 @@
           <a href="contact.html" class="btn btn-outline pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 3 — Product Photos $1,700/session (Best Value, featured dark) -->
         <div class="pricing-card pricing-card--featured reveal reveal-delay-3">
           <div class="pricing-card__badge t-label">Best Value</div>
           <div class="pricing-card__tier t-label">Product Photos</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">1,000</span>
+            <span class="pricing-card__amount">1,700</span>
             <span class="pricing-card__period">/session</span>
           </div>
           <div class="rule" style="margin:24px 0;background:rgba(255,255,255,0.12)"></div>
@@ -362,11 +580,12 @@
           <a href="contact.html" class="btn btn-primary pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 4 — AI Model $600/model -->
         <div class="pricing-card reveal reveal-delay-4">
           <div class="pricing-card__tier t-label">AI Model</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">500</span>
+            <span class="pricing-card__amount">600</span>
             <span class="pricing-card__period">/model</span>
           </div>
           <div class="rule" style="margin:24px 0"></div>
@@ -392,11 +611,12 @@
       </div>
       <div class="pricing-cards pricing-cards--3">
 
+        <!-- Card 1 — Short Form Video $400/video -->
         <div class="pricing-card reveal reveal-delay-1">
           <div class="pricing-card__tier t-label">Short Form Video</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">200</span>
+            <span class="pricing-card__amount">400</span>
             <span class="pricing-card__period">/video</span>
           </div>
           <div class="rule" style="margin:24px 0"></div>
@@ -407,13 +627,14 @@
           <a href="contact.html" class="btn btn-outline pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 2 — Full Production $1,600/video (featured) -->
         <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
           <div class="pricing-card__badge t-label">Full Service</div>
           <div class="pricing-card__tier t-label">Full Production</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">1,599</span>
-            <span class="pricing-card__period">/project</span>
+            <span class="pricing-card__amount">1,600</span>
+            <span class="pricing-card__period">/video</span>
           </div>
           <div class="rule" style="margin:24px 0;background:rgba(255,255,255,0.12)"></div>
           <ul class="pricing-card__features">
@@ -425,11 +646,12 @@
           <a href="contact.html" class="btn btn-primary pricing-card__cta"><span>Get Started</span></a>
         </div>
 
+        <!-- Card 3 — Event Coverage $2,500/event -->
         <div class="pricing-card reveal reveal-delay-3">
           <div class="pricing-card__tier t-label">Event Coverage</div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">$</span>
-            <span class="pricing-card__amount">1,999</span>
+            <span class="pricing-card__amount">2,500</span>
             <span class="pricing-card__period">/event</span>
           </div>
           <div class="rule" style="margin:24px 0"></div>
@@ -484,7 +706,7 @@
           <p class="footer__col-title">Contact</p>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Email</p>
-            <a href="mailto:inquiry.mammamia@gmail.com" class="footer__contact-value footer__col-link">inquiry.mammamia@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#7f16110e0a160d0651121e12121e12161e3f18121e1613511c1012" class="footer__contact-value footer__col-link"><span class="__cf_email__" data-cfemail="f49d9a85819d868dda9995999995999d95b49399959d98da979b99">[email&#160;protected]</span></a>
           </div>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Address</p>
@@ -508,7 +730,36 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
   <script src="js/pricing.js"></script>
+
+  <!-- ======== Floating Promo Badge ======== -->
+  <div class="floating-promo" id="floatingPromo">
+    <a href="contact.html" class="floating-promo__main">
+      <span class="floating-promo__star">★</span>
+      <span>Limited Offer</span>
+    </a>
+    <button type="button" class="floating-promo__close" id="floatingPromoClose" aria-label="Close promotional offer">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4 L12 12 M12 4 L4 12" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <script>
+    (function () {
+      var promo = document.getElementById('floatingPromo');
+      var closeBtn = document.getElementById('floatingPromoClose');
+      if (!promo || !closeBtn) return;
+      try {
+        if (sessionStorage.getItem('floatingPromoClosed') === '1') {
+          promo.classList.add('floating-promo--hidden');
+        }
+      } catch (e) {}
+      closeBtn.addEventListener('click', function () {
+        promo.classList.add('floating-promo--hidden');
+        try { sessionStorage.setItem('floatingPromoClosed', '1'); } catch (e) {}
+      });
+    })();
+  </script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

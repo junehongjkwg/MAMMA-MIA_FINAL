@@ -10,6 +10,86 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/contact.css" />
+
+  <style>
+    /* ============================================
+       MAMMA MIA — Contact Promo Box
+       ============================================ */
+    @keyframes promoShimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* ---------- Contact Promo Box (matches email card sizing) ---------- */
+    .contact-info-card--promo {
+      background: var(--color-accent, #2a3bff);
+      border: 1px solid var(--color-accent, #2a3bff);
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .contact-info-card--promo::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.10) 50%, transparent 100%);
+      animation: promoShimmer 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .contact-info-card--promo:hover {
+      border-color: #fff;
+      transform: translateX(4px);
+      background: var(--color-accent-dark, #1a2bcc);
+    }
+    .contact-info-card__icon--promo {
+      background: rgba(255,255,255,0.18) !important;
+      border: 1px solid rgba(255,255,255,0.30);
+    }
+    .contact-info-card__icon--promo svg {
+      stroke: #fff !important;
+      fill: #fff;
+    }
+    .contact-info-card--promo .contact-info-card__label {
+      color: rgba(255,255,255,0.85) !important;
+      letter-spacing: 0.18em;
+    }
+    .contact-info-card__promo-body {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-info-card__promo-text {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .contact-info-card__promo-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-left: auto;
+      flex-shrink: 0;
+      color: #fff;
+      transition: transform 0.2s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-info-card--promo:hover .contact-info-card__promo-arrow {
+      transform: translateX(4px);
+    }
+    .contact-info-card__promo-arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -72,6 +152,24 @@
 
           <!-- Contact Info Cards -->
           <div class="contact-info-cards reveal reveal-delay-3">
+
+          <!-- Limited-Time Offer Box (matches email card sizing, accent fill) -->
+          <a href="#contactForm" class="contact-info-card contact-info-card--promo reveal reveal-delay-3">
+            <div class="contact-info-card__icon contact-info-card__icon--promo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2 L14.5 9 L22 9.3 L16 14 L18 21.5 L12 17.3 L6 21.5 L8 14 L2 9.3 L9.5 9 Z"/>
+              </svg>
+            </div>
+            <div class="contact-info-card__promo-body">
+              <p class="contact-info-card__label t-label">Limited-Time Offer</p>
+              <p class="contact-info-card__promo-text">Special Pricing Through September. Get in Touch to Learn More.</p>
+            </div>
+            <span class="contact-info-card__promo-arrow" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </a>
+
+
             <div class="contact-info-card">
               <div class="contact-info-card__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +179,7 @@
               </div>
               <div>
                 <p class="contact-info-card__label t-label">Email</p>
-                <a href="mailto:inquiry.mammamia@gmail.com" class="contact-info-card__value">inquiry.mammamia@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#650c0b14100c171c4b0804080804080c04250208040c094b060a08" class="contact-info-card__value"><span class="__cf_email__" data-cfemail="50393e21253922297e3d313d3d313d393110373d31393c7e333f3d">[email&#160;protected]</span></a>
               </div>
             </div>
             <div class="contact-info-card">
@@ -324,7 +422,7 @@
           <p class="footer__col-title">Contact</p>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Email</p>
-            <a href="mailto:inquiry.mammamia@gmail.com" class="footer__contact-value footer__col-link">inquiry.mammamia@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#6c05021d19051e1542010d01010d01050d2c0b010d0500420f0301" class="footer__contact-value footer__col-link"><span class="__cf_email__" data-cfemail="8ae3e4fbffe3f8f3a4e7ebe7e7ebe7e3ebcaede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a>
           </div>
           <div class="footer__contact-item">
             <p class="footer__contact-label">Address</p>
@@ -348,7 +446,8 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
   <script src="js/contact.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
