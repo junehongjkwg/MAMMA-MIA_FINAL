@@ -213,6 +213,9 @@
   
     /* Extra spacing below promo bar before main content */
     .promo-bar--with-gap { margin-bottom: clamp(40px, 6vw, 80px); }
+
+    /* Flush variant — promo bar sits directly against next element (e.g., dark marquee) */
+    .promo-bar--flush { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -299,7 +302,7 @@
   </div>
 
   <!-- ======== Promo Bar — Limited-Time Offer ======== -->
-  <div class="promo-bar promo-bar--with-gap" role="region" aria-label="Limited-Time Offer">
+  <div class="promo-bar promo-bar--flush" role="region" aria-label="Limited-Time Offer">
     <div class="promo-bar__inner">
       <span class="promo-bar__tag">Limited-Time Offer</span>
       <span class="promo-bar__text">Special Pricing Through September. Get in Touch to Learn More.</span>

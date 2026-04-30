@@ -244,6 +244,19 @@
   
     /* Extra spacing below promo bar before main content */
     .promo-bar--with-gap { margin-bottom: clamp(40px, 6vw, 80px); }
+
+    /* White gap variant — used on portfolio-social.html where surrounding section is grey */
+    .promo-bar-wrap--white {
+      background: #ffffff;
+      padding-bottom: clamp(40px, 6vw, 80px);
+    }
+    .promo-bar-wrap--white .promo-bar { margin-bottom: 0; }
+    /* Fallback for simpler approach */
+    .promo-bar--white-gap {
+      background-color: var(--color-accent, #2a3bff);
+      box-shadow: 0 80px 0 0 #ffffff;
+      margin-bottom: clamp(40px, 6vw, 80px);
+    }
 </style>
 </head>
 <body>
@@ -323,15 +336,17 @@
     </div>
   </div>
 
-  <!-- ======== Promo Bar — Limited-Time Offer ======== -->
-  <div class="promo-bar promo-bar--with-gap" role="region" aria-label="Limited-Time Offer">
-    <div class="promo-bar__inner">
-      <span class="promo-bar__tag">Limited-Time Offer</span>
-      <span class="promo-bar__text">Special Pricing Through September. Get in Touch to Learn More.</span>
-      <a href="contact.html" class="promo-bar__link">
-        <span>Inquire Now</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
+  <!-- ======== Promo Bar — Limited-Time Offer (white gap variant) ======== -->
+  <div class="promo-bar-wrap promo-bar-wrap--white">
+    <div class="promo-bar" role="region" aria-label="Limited-Time Offer">
+      <div class="promo-bar__inner">
+        <span class="promo-bar__tag">Limited-Time Offer</span>
+        <span class="promo-bar__text">Special Pricing Through September. Get in Touch to Learn More.</span>
+        <a href="contact.html" class="promo-bar__link">
+          <span>Inquire Now</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
