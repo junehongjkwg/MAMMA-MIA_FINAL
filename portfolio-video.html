@@ -29,6 +29,58 @@
       color: #ffffff !important;
       border-bottom-color: var(--color-accent, #2a3bff);
     }
+
+    /* Top nav — white text for dark hero pages (Video) */
+    .nav__link {
+      color: rgba(255,255,255,0.65) !important;
+      transition: color 0.25s ease;
+    }
+    .nav__link:hover,
+    .nav__link:focus {
+      color: #ffffff !important;
+    }
+    .nav__link.active {
+      color: #ffffff !important;
+    }
+    .nav__logo-text {
+      color: #ffffff !important;
+    }
+    .nav__cta.btn-outline {
+      color: #ffffff !important;
+      border-color: rgba(255,255,255,0.4) !important;
+    }
+    .nav__cta.btn-outline:hover {
+      background: #ffffff !important;
+      color: var(--color-black, #0a0a0a) !important;
+      border-color: #ffffff !important;
+    }
+    .nav__hamburger span {
+      background: #ffffff !important;
+    }
+    /* Keep nav readable when scrolled (white background appears) */
+    .nav.scrolled .nav__link,
+    .nav.is-scrolled .nav__link {
+      color: var(--color-gray-600, #555550) !important;
+    }
+    .nav.scrolled .nav__link.active,
+    .nav.is-scrolled .nav__link.active,
+    .nav.scrolled .nav__link:hover,
+    .nav.is-scrolled .nav__link:hover {
+      color: var(--color-black, #0a0a0a) !important;
+    }
+    .nav.scrolled .nav__logo-text,
+    .nav.is-scrolled .nav__logo-text {
+      color: var(--color-black, #0a0a0a) !important;
+    }
+    .nav.scrolled .nav__cta.btn-outline,
+    .nav.is-scrolled .nav__cta.btn-outline {
+      color: var(--color-black, #0a0a0a) !important;
+      border-color: var(--color-black, #0a0a0a) !important;
+    }
+    .nav.scrolled .nav__hamburger span,
+    .nav.is-scrolled .nav__hamburger span {
+      background: var(--color-black, #0a0a0a) !important;
+    }
   </style>
 
   <style>
@@ -267,7 +319,7 @@
   <nav class="nav" id="mainNav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
-        <span class="nav__logo-text" style="color:var(--color-black)">MAMMA MIA</span>
+        <span class="nav__logo-text">MAMMA MIA</span>
       </a>
       <div class="nav__links">
         <a href="index.html" class="nav__link">About Us</a>
