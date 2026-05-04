@@ -299,30 +299,33 @@
        Coming Soon — Reel item indicator + Modal placeholder
        ============================================ */
 
-    /* Small label badge on the thumbnail for items pending YouTube release */
+    /* Coming Soon thumbnail badge — uses dedicated .reel-item__coming-badge
+       (NOT ::after, since video-cinema.css already uses ::after for letterbox bars) */
     .reel-item[data-coming-soon="true"] .reel-item__media { cursor: pointer; }
-    .reel-item[data-coming-soon="true"] .reel-item__media::after {
-      content: 'Coming Soon';
+    .reel-item__coming-badge {
       position: absolute;
       top: 16px;
       right: 16px;
-      z-index: 3;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
       font-family: 'Inter', sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #fff;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.55);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.32);
       padding: 6px 12px;
       border-radius: 999px;
       pointer-events: none;
+      white-space: nowrap;
     }
     @media (max-width: 460px) {
-      .reel-item[data-coming-soon="true"] .reel-item__media::after {
+      .reel-item__coming-badge {
         top: 12px;
         right: 12px;
         font-size: 9px;
@@ -570,6 +573,7 @@
         </div>
         <div class="reel-item__media" tabindex="0" role="button" aria-label="Play A Way to Hanti - Pilgrimage Documentary">
           <img class="reel-item__poster" src="images/video/a-way-to-hanti-cathedral-interior-spiritual-documentary.jpeg" alt="A Way to Hanti - Korean Catholic pilgrimage documentary cathedral interior" loading="lazy" />
+          <span class="reel-item__coming-badge">Coming Soon</span>
           <div class="reel-item__play">
             <div class="reel-item__play-btn">
               <span class="reel-item__play-pulse"></span>
@@ -598,6 +602,7 @@
         </div>
         <div class="reel-item__media" tabindex="0" role="button" aria-label="Play MCST x KOCCA - Wild VR Content">
           <img class="reel-item__poster" src="images/video/08_mcst_kocca_wild_vr.jpg" alt="MCST x KOCCA - Wild VR Content" loading="lazy" />
+          <span class="reel-item__coming-badge">Coming Soon</span>
           <div class="reel-item__play">
             <div class="reel-item__play-btn">
               <span class="reel-item__play-pulse"></span>
@@ -652,6 +657,7 @@
         </div>
         <div class="reel-item__media" tabindex="0" role="button" aria-label="Play Cars &amp; Hoops - Event Highlight Film">
           <img class="reel-item__poster" src="images/video/cars-and-hoops-luxury-supercar-event-vancouver.jpeg" alt="Cars &amp; Hoops - Luxury supercar event Vancouver" loading="lazy" />
+          <span class="reel-item__coming-badge">Coming Soon</span>
           <div class="reel-item__play">
             <div class="reel-item__play-btn">
               <span class="reel-item__play-pulse"></span>
@@ -706,6 +712,7 @@
         </div>
         <div class="reel-item__media" tabindex="0" role="button" aria-label="Play Once Upon a Shine Gala - Event Recap Film">
           <img class="reel-item__poster" src="images/video/once-upon-a-shine-gala-event-stage-lighting-vancouver.jpeg" alt="Once Upon a Shine Gala - Event stage lighting Vancouver" loading="lazy" />
+          <span class="reel-item__coming-badge">Coming Soon</span>
           <div class="reel-item__play">
             <div class="reel-item__play-btn">
               <span class="reel-item__play-pulse"></span>
@@ -733,6 +740,7 @@
         </div>
         <div class="reel-item__media" tabindex="0" role="button" aria-label="Play Fashion Film - City Vibe">
           <img class="reel-item__poster" src="images/video/fashion_film_2_thumb.jpeg" alt="Fashion Film - City Vibe Vancouver street style" loading="lazy" />
+          <span class="reel-item__coming-badge">Coming Soon</span>
           <div class="reel-item__play">
             <div class="reel-item__play-btn">
               <span class="reel-item__play-pulse"></span>
