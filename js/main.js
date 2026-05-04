@@ -9,6 +9,7 @@
      1. PAGE TRANSITION CURTAIN
      - 페이지 진입 시 검은 커튼이 위로 올라가며 열림
      - 링크 클릭 시 커튼이 내려오고 페이지 이동
+     - bfcache 복원(뒤로가기) 시에도 커튼/로더/reveal 정상 복원
   ================================================================ */
   const curtain = document.getElementById('pageCurtain');
 
@@ -53,6 +54,63 @@
       window.addEventListener('load', hideLoader);
     }
   }
+
+  /* ================================================================
+     2.5. BFCACHE RESTORE — 뒤로가기 시 페이지 상태 복원
+     - 모바일 Safari/Chrome은 뒤로가기 시 페이지를 캐시에서 복원하여
+       DOMContentLoaded/load 이벤트가 다시 발생하지 않음
+     - pageshow 이벤트의 persisted=true 면 bfcache 복원 상태
+     - 이때 커튼/로더/모달/reveal 클래스를 모두 정상 상태로 되돌림
+  ================================================================ */
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted) return; // bfcache 복원이 아니면 무시
+
+    // 1) 페이지 커튼 — 올라간 상태로 복원
+    if (curtain) {
+      curtain.classList.remove('curtain--in');
+      curtain.classList.add('curtain--out');
+    }
+
+    // 2) 페이지 로더 — 숨김 상태 유지
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+
+    // 3) 모달 닫기 — 뒤로가기로 돌아왔을 때 모달이 떠있지 않도록
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    document.querySelectorAll('.reel-modal.is-open, .image-lightbox.is-open, .video-modal.is-open')
+      .forEach(m => m.classList.remove('is-open'));
+    const reelIframeWrap = document.getElementById('reelModalIframeWrap');
+    if (reelIframeWrap) reelIframeWrap.innerHTML = '';
+    const lightboxImg = document.getElementById('lightboxImg');
+    if (lightboxImg) lightboxImg.src = '';
+
+    // 4) 모바일 햄버거 메뉴 닫기
+    const hb = document.getElementById('hamburger');
+    const mm = document.getElementById('mobileMenu');
+    if (hb) hb.classList.remove('open');
+    if (mm) mm.classList.remove('open');
+
+    // 5) Reveal 애니메이션 — 화면에 보이는 요소 즉시 visible 처리
+    //    (IntersectionObserver가 bfcache 복원 시 즉시 콜백을 못 던지는 경우 대비)
+    const revealTargets = document.querySelectorAll(
+      '.reveal, .reel-card, .cardnews-item, .port-card, .masonry__item, .editorial-card'
+    );
+    revealTargets.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) {
+        el.classList.add('visible', 'is-visible');
+      }
+    });
+
+    // 6) 네비게이션 숨김 상태 해제 (스크롤 위치가 상단이면)
+    const navEl = document.getElementById('mainNav');
+    if (navEl && window.scrollY < 200) {
+      navEl.classList.remove('nav--hidden');
+    }
+  });
 
   /* ================================================================
      3. MAGNETIC CURSOR
