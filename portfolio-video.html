@@ -294,6 +294,90 @@
       /* Remove the with-gap margin since wrapper now handles spacing */
       margin-bottom: 0;
     }
+
+    /* ============================================
+       Coming Soon — Reel item indicator + Modal placeholder
+       ============================================ */
+
+    /* Small label badge on the thumbnail for items pending YouTube release */
+    .reel-item[data-coming-soon="true"] .reel-item__media { cursor: pointer; }
+    .reel-item[data-coming-soon="true"] .reel-item__media::after {
+      content: 'Coming Soon';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 3;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 6px 12px;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+    @media (max-width: 460px) {
+      .reel-item[data-coming-soon="true"] .reel-item__media::after {
+        top: 12px;
+        right: 12px;
+        font-size: 9px;
+        padding: 4px 9px;
+        letter-spacing: 0.14em;
+      }
+    }
+
+    /* Modal coming-soon placeholder (replaces iframe when no YouTube link yet) */
+    .video-modal__coming-soon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 40px 28px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a26 100%);
+    }
+    .video-modal__coming-soon svg {
+      width: 56px;
+      height: 56px;
+      color: var(--color-accent, #2a3bff);
+      opacity: 0.9;
+      animation: comingSoonPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes comingSoonPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50%      { transform: scale(1.08); opacity: 1; }
+    }
+    .video-modal__coming-soon-label {
+      font-family: 'Bebas Neue', 'Inter', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0;
+      line-height: 1;
+    }
+    .video-modal__coming-soon-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 420px;
+      margin: 0;
+    }
+    @media (max-width: 460px) {
+      .video-modal__coming-soon { padding: 32px 20px; gap: 14px; }
+      .video-modal__coming-soon svg { width: 44px; height: 44px; }
+    }
 </style>
 </head>
 <body class="video-page">
@@ -392,13 +476,13 @@
   <!-- ════════════════════════════════════════════
        CINEMA REEL — Full-width stack
        Click thumbnail → Vimeo modal
-       data-vimeo-id 값을 실제 ID로 교체하세요
+       data-youtube-id (YouTube 임베드) 또는 data-coming-soon (업데이트 예정)
   ════════════════════════════════════════════ -->
   <main class="cinema-reel">
     <div class="cinema-reel__inner">
 
       <!-- 01 — DL Acro 1 -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="DL ACRO - Brand Campaign Film" data-client="Brand Campaign Film">
+      <article class="reel-item" data-youtube-id="hUjiEGfnI-Q" data-title="DL ACRO - Brand Campaign Film" data-client="Brand Campaign Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">DL ACRO - Brand Campaign Film</span>
           <span class="reel-item__cat">Brand Campaign Film</span>
@@ -425,7 +509,7 @@
       </article>
 
       <!-- 02 — F Diary Perfume -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="F Diary Perfume - Beauty Campaign Film" data-client="Beauty Campaign Film">
+      <article class="reel-item" data-youtube-id="gOp1m1YT0ag" data-title="F Diary Perfume - Beauty Campaign Film" data-client="Beauty Campaign Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">F Diary Perfume - Beauty Campaign Film</span>
           <span class="reel-item__cat">Beauty Campaign Film</span>
@@ -452,7 +536,7 @@
       </article>
 
       <!-- 03 — Hanyang Industrial -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="Hanyang Industrial Co., Ltd. - Corporate Brand Film" data-client="Corporate Brand Film">
+      <article class="reel-item" data-youtube-id="aAYGR4vVTns" data-title="Hanyang Industrial Co., Ltd. - Corporate Brand Film" data-client="Corporate Brand Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">Hanyang Industrial Co., Ltd. - Corporate Brand Film</span>
           <span class="reel-item__cat">Corporate Brand Film</span>
@@ -479,7 +563,7 @@
       </article>
 
       <!-- 04 — A Way to Hanti -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="A Way to Hanti - Pilgrimage Documentary" data-client="Documentary Film">
+      <article class="reel-item" data-coming-soon="true" data-title="A Way to Hanti - Pilgrimage Documentary" data-client="Documentary Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">A Way to Hanti - Pilgrimage Documentary</span>
           <span class="reel-item__cat">Documentary Film</span>
@@ -507,7 +591,7 @@
       </article>
 
       <!-- 05 — MCST x KOCCA Wild VR -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="MCST x KOCCA - Wild VR Content" data-client="Experiential VR">
+      <article class="reel-item" data-coming-soon="true" data-title="MCST x KOCCA - Wild VR Content" data-client="Experiential VR">
         <div class="reel-item__index-row">
           <span class="reel-item__index">MCST x KOCCA - Wild VR Content</span>
           <span class="reel-item__cat">Branded Content / Experiential Video</span>
@@ -534,7 +618,7 @@
       </article>
 
       <!-- 06 — MCST ASEAN Documentary -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="MCST - ASEAN Documentary" data-client="Documentary Film">
+      <article class="reel-item" data-youtube-id="UhrqjDQ5Nnw" data-title="MCST - ASEAN Documentary" data-client="Documentary Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">MCST - ASEAN Documentary</span>
           <span class="reel-item__cat">Documentary Film</span>
@@ -561,7 +645,7 @@
       </article>
 
       <!-- 07 — Cars And Hoops -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="Cars &amp; Hoops - Event Highlight Film" data-client="Brand Film">
+      <article class="reel-item" data-coming-soon="true" data-title="Cars &amp; Hoops - Event Highlight Film" data-client="Brand Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">Cars &amp; Hoops - Event Highlight Film</span>
           <span class="reel-item__cat">Event Highlight Film</span>
@@ -588,7 +672,7 @@
       </article>
 
       <!-- 08 — DL Acro 2 -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="DL ACRO - Brand Campaign Film II" data-client="Brand Campaign Film">
+      <article class="reel-item" data-youtube-id="0YuW2bEdGxY" data-title="DL ACRO - Brand Campaign Film II" data-client="Brand Campaign Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">DL ACRO - Brand Campaign Film II</span>
           <span class="reel-item__cat">Brand Campaign Film</span>
@@ -615,7 +699,7 @@
       </article>
 
       <!-- 09 — Once Upon a Shine Gala -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="Once Upon a Shine Gala - Event Recap Film" data-client="Event Film">
+      <article class="reel-item" data-coming-soon="true" data-title="Once Upon a Shine Gala - Event Recap Film" data-client="Event Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">Once Upon a Shine Gala - Event Recap Film</span>
           <span class="reel-item__cat">Event Recap Film</span>
@@ -642,7 +726,7 @@
       </article>
 
       <!-- 10 — Fashion Film (City Vibe) -->
-      <article class="reel-item" data-vimeo-id="76979871" data-title="Fashion Film - City Vibe" data-client="Fashion Film">
+      <article class="reel-item" data-coming-soon="true" data-title="Fashion Film - City Vibe" data-client="Fashion Film">
         <div class="reel-item__index-row">
           <span class="reel-item__index">Fashion Film - City Vibe</span>
           <span class="reel-item__cat">Fashion Film</span>
@@ -777,12 +861,31 @@
       const iframeWrap  = document.getElementById('videoModalIframeWrap');
       const captionEl   = document.getElementById('videoModalCaption');
 
-      function openModal(vimeoId, title, client) {
-        if (!vimeoId) return;
-        // Build Vimeo embed iframe
-        const src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
-        iframeWrap.innerHTML =
-          `<iframe src="${src}" title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      function openModal(article) {
+        const youtubeId  = article.dataset.youtubeId;
+        const comingSoon = article.dataset.comingSoon === 'true';
+        const title      = article.dataset.title;
+        const client     = article.dataset.client;
+
+        if (comingSoon) {
+          // Show coming-soon placeholder card inside modal (no iframe)
+          iframeWrap.innerHTML =
+            `<div class="video-modal__coming-soon">` +
+              `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">` +
+                `<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>` +
+              `</svg>` +
+              `<p class="video-modal__coming-soon-label">Coming Soon</p>` +
+              `<p class="video-modal__coming-soon-text">This film will be available shortly.<br/>Stay tuned for the upcoming release.</p>` +
+            `</div>`;
+        } else if (youtubeId) {
+          // Build YouTube embed iframe
+          const src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+          iframeWrap.innerHTML =
+            `<iframe src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        } else {
+          return; // Nothing to show
+        }
+
         // Caption
         captionEl.querySelector('strong').textContent = title || '';
         captionEl.querySelector('span').textContent   = client || '';
@@ -800,17 +903,14 @@
 
       // Bind clicks on each reel item's media
       document.querySelectorAll('.reel-item').forEach((article) => {
-        const media   = article.querySelector('.reel-item__media');
-        const vimeoId = article.dataset.vimeoId;
-        const title   = article.dataset.title;
-        const client  = article.dataset.client;
+        const media = article.querySelector('.reel-item__media');
         if (!media) return;
 
-        media.addEventListener('click', () => openModal(vimeoId, title, client));
+        media.addEventListener('click', () => openModal(article));
         media.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openModal(vimeoId, title, client);
+            openModal(article);
           }
         });
       });
@@ -869,6 +969,7 @@
     })();
   </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
