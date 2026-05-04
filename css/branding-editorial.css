@@ -722,3 +722,45 @@
     grid-row: span 2;
   }
 }
+
+/* ---------- Small Mobile (≤ 460px) ---------- */
+@media (max-width: 460px) {
+  .editorial-hero { padding-top: calc(var(--nav-height) + 40px); padding-bottom: 50px; }
+  .editorial-hero__issue { font-size: 11px; letter-spacing: 0.16em; margin-bottom: 24px; }
+  .editorial-hero__title { font-size: clamp(48px, 16vw, 88px); line-height: 0.92; }
+  .editorial-hero__deck { font-size: 14px; line-height: 1.55; }
+
+  .editorial-toc { padding: 32px 0; }
+  .editorial-toc__title { font-size: 11px; }
+  .editorial-toc__item { font-size: 13px; padding: 12px 0; }
+
+  .editorial-feature { padding: 50px 0; }
+  .editorial-feature__chapter { font-size: 11px; }
+  .editorial-feature__title { font-size: clamp(32px, 9vw, 56px); line-height: 0.95; }
+  .editorial-feature__lede { font-size: 15px; line-height: 1.6; }
+  .editorial-feature__body p { font-size: 14px; line-height: 1.7; }
+  .editorial-feature__pull { font-size: clamp(20px, 6vw, 28px); padding: 24px 0; }
+  .editorial-feature__credits dt { font-size: 10px; }
+  .editorial-feature__credits dd { font-size: 13px; }
+
+  .editorial-manifesto { padding: 50px 0; }
+  .editorial-manifesto__title { font-size: clamp(32px, 9vw, 52px); }
+  .editorial-manifesto__step { grid-template-columns: 48px 1fr; gap: 14px; padding: 20px 0; }
+  .editorial-manifesto__step-num { font-size: 28px; }
+  .editorial-manifesto__step-title { font-size: 16px; }
+  .editorial-manifesto__step-text { font-size: 13px; line-height: 1.55; }
+
+  .editorial-grid { grid-auto-rows: 200px; gap: 12px; }
+  .editorial-card__caption { padding: 16px; }
+  .editorial-card__caption-title { font-size: 13px; }
+  .editorial-card__caption-meta { font-size: 10px; }
+
+  .editorial-section__eyebrow { font-size: 11px; }
+  .editorial-section__title { font-size: clamp(32px, 9vw, 52px); }
+}
+
+/* ---------- Landscape phones ---------- */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .editorial-hero { padding-top: calc(var(--nav-height) + 32px); padding-bottom: 32px; }
+  .editorial-hero__title { font-size: clamp(40px, 8vw, 72px); }
+}

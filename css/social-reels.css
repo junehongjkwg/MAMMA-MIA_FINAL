@@ -501,4 +501,80 @@ body.modal-open {
     width: 36px;
     height: 36px;
   }
+
+  /* Modal padding on mobile — maximize 9:16 area */
+  .reel-modal { padding: clamp(40px, 10vw, 60px) 16px; }
+  .image-lightbox { padding: clamp(40px, 10vw, 60px) 16px; }
+
+  /* 9:16 aspect ratio constrained to viewport on mobile */
+  .reel-modal__inner {
+    height: auto;
+    width: 100%;
+    max-width: calc((100vh - 120px) * 9 / 16);
+    max-height: calc(100vh - 120px);
+    margin: 0 auto;
+  }
+
+  .image-lightbox__inner {
+    width: 100%;
+    max-height: calc(100vh - 100px);
+  }
+  .image-lightbox__img {
+    max-width: 100%;
+    max-height: calc(100vh - 100px);
+  }
+
+  /* Section header stack on mobile */
+  .social-section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .social-section__title { font-size: clamp(36px, 9vw, 56px); line-height: 0.95; }
+  .social-section__eyebrow { font-size: 11px; }
+  .social-section__note { font-size: 11px; }
+
+  /* Hero adjustments */
+  .social-hero { padding: calc(var(--nav-height, 72px) + 50px) 0 40px; }
+  .social-hero__title { font-size: clamp(48px, 13vw, 88px); line-height: 0.92; }
+  .social-hero__sub { font-size: 15px; line-height: 1.5; }
+
+  /* Reel/Card item bottom titles — readable on small screens */
+  .reel-card__title,
+  .cardnews-item__title { font-size: 13px; line-height: 1.25; }
+  .reel-card__overlay,
+  .cardnews-item__overlay { padding: 14px 16px; }
+  .reel-card__badge,
+  .cardnews-item__badge { font-size: 10px; padding: 4px 8px; }
+}
+
+/* ---------- Small Mobile (≤ 460px) ---------- */
+@media (max-width: 460px) {
+  .social-hero__title { font-size: clamp(44px, 14vw, 72px); }
+  .social-hero__label { font-size: 11px; letter-spacing: 0.16em; }
+  .social-section__title { font-size: clamp(32px, 11vw, 48px); }
+
+  .reel-grid { gap: 8px; }
+  .cardnews-grid { column-gap: 8px; }
+  .cardnews-item { margin-bottom: 8px; }
+
+  .reel-card { border-radius: 3px; }
+  .reel-card__play-btn { width: 48px; height: 48px; }
+  .reel-card__play-btn svg { width: 18px; height: 18px; }
+
+  .reel-card__title,
+  .cardnews-item__title { font-size: 12px; }
+  .reel-modal__caption,
+  .image-lightbox__caption { font-size: 10px; bottom: -28px; }
+}
+
+/* ---------- Landscape orientation — short height ---------- */
+@media (max-width: 900px) and (orientation: landscape) {
+  .reel-modal__inner {
+    height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    width: auto;
+    aspect-ratio: 9 / 16;
+  }
+  .reel-modal { padding: 30px 16px; }
 }

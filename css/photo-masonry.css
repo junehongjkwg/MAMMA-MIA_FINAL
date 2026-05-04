@@ -191,3 +191,23 @@
 .filter-bar.filter-bar--photo .filter-bar__inner {
   justify-content: flex-start;
 }
+
+/* ---------- Small Mobile (≤ 460px) ---------- */
+@media (max-width: 460px) {
+  .photo-hero { padding: calc(var(--nav-height, 72px) + 48px) 0 40px; }
+  .photo-hero__title { font-size: clamp(48px, 16vw, 88px); line-height: 0.92; }
+  .photo-hero__label { font-size: 11px; letter-spacing: 0.16em; }
+  .photo-hero__sub { font-size: 14px; line-height: 1.55; }
+
+  .masonry { column-gap: 8px; }
+  .masonry__item { margin-bottom: 8px; border-radius: 3px; }
+  .masonry__caption { padding: 12px 14px; }
+  .masonry__caption-title { font-size: 12px; }
+  .masonry__caption-meta { font-size: 10px; }
+}
+
+/* ---------- Landscape phones ---------- */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .photo-hero { padding: calc(var(--nav-height, 72px) + 32px) 0 28px; }
+  .photo-hero__title { font-size: clamp(40px, 8vw, 72px); }
+}

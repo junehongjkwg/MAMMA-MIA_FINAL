@@ -229,3 +229,34 @@
   .filter-bar .container { flex-direction: column; align-items: flex-start; gap: 0; }
   .filter-bar__count { padding: 10px 0; }
 }
+
+/* ---------- Small Mobile (≤ 460px) ---------- */
+@media (max-width: 460px) {
+  .port-hero { padding-top: calc(var(--nav-height) + 48px); padding-bottom: 40px; }
+  .port-hero .page-hero__title,
+  .page-hero__title { font-size: clamp(48px, 14vw, 80px); line-height: 0.92; }
+  .port-hero .page-hero__sub { font-size: 14px; line-height: 1.55; }
+
+  .filter-btn { padding: 14px 14px; font-size: 10px; letter-spacing: 0.08em; min-height: 44px; }
+  .filter-bar__count { font-size: 11px; padding: 8px 0; }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+    gap: 10px;
+  }
+  .port-card__overlay { padding: 16px; }
+  .port-card__title { font-size: 14px; }
+  .port-card__category { font-size: 10px; letter-spacing: 0.12em; }
+
+  .overview-section { margin-bottom: 60px; }
+  .overview-section__head { gap: 16px; margin-bottom: 24px; padding-bottom: 12px; }
+  .overview-section__title { font-size: clamp(28px, 8vw, 40px); }
+  .overview-section__count { font-size: 11px; }
+}
+
+/* ---------- Landscape phones ---------- */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .port-hero { padding-top: calc(var(--nav-height) + 32px); padding-bottom: 24px; }
+  .portfolio-grid { grid-auto-rows: 220px; }
+}

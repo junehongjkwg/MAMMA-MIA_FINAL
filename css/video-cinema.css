@@ -387,3 +387,33 @@ body.modal-open {
   .reel-item__credits { gap: 18px; }
   .video-modal__close { top: -44px; width: 36px; height: 36px; }
 }
+
+/* ---------- Small Mobile (≤ 460px) ---------- */
+@media (max-width: 460px) {
+  .video-hero { padding: calc(var(--nav-height, 72px) + 60px) 0 50px; }
+  .video-hero__title { font-size: clamp(52px, 16vw, 96px); line-height: 0.92; }
+  .video-hero__label { font-size: 11px; letter-spacing: 0.16em; }
+  .video-hero__sub { font-size: 14px; line-height: 1.55; }
+
+  .reel-item { margin-bottom: 48px; }
+  .reel-item__index { font-size: 11px; }
+  .reel-item__title { font-size: clamp(28px, 8vw, 42px); line-height: 1.0; }
+  .reel-item__client { font-size: 11px; letter-spacing: 0.14em; }
+  .reel-item__credits { gap: 14px; flex-wrap: wrap; }
+  .reel-item__credit-label { font-size: 10px; }
+  .reel-item__credit-value { font-size: 12px; }
+  .reel-item__poster-wrap { border-radius: 3px; }
+  .reel-item__play-btn { width: 56px; height: 56px; }
+  .reel-item__play-btn svg { width: 20px; height: 20px; }
+
+  .video-modal { padding: 40px 12px; }
+  .video-modal__close { top: -40px; width: 32px; height: 32px; }
+  .video-modal__caption { font-size: 10px; bottom: -28px; }
+}
+
+/* ---------- Landscape phones ---------- */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .video-hero { padding: calc(var(--nav-height, 72px) + 32px) 0 32px; }
+  .video-hero__title { font-size: clamp(40px, 8vw, 72px); }
+  .video-modal__inner { max-height: calc(100vh - 80px); }
+}
