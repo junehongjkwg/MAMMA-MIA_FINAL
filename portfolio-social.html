@@ -257,6 +257,11 @@
       box-shadow: 0 80px 0 0 #ffffff;
       margin-bottom: clamp(40px, 6vw, 80px);
     }
+
+    /* ---------- Static (non-clickable) Reel Card ---------- */
+    /* Used when no YouTube embed is available — thumbnail-only display */
+    .reel-card--static { cursor: default; }
+    .reel-card--static:hover .reel-card__poster { transform: none; }
 </style>
 </head>
 <body>
@@ -355,7 +360,7 @@
   <!-- ════════════════════════════════════════════
        SECTION 01 — REELS (9:16 vertical grid)
        Click → Vimeo modal in vertical aspect
-       data-vimeo-id 값을 실제 ID로 교체하세요
+       data-youtube-id 값으로 YouTube Shorts 임베드 처리
   ════════════════════════════════════════════ -->
   <section class="social-section">
     <div class="social-section__inner">
@@ -369,7 +374,7 @@
 
       <div class="reel-grid" id="reelGrid">
         <!-- 01 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Restaurant - New Menu Launch" tabindex="0" role="button" aria-label="Play Restaurant - New Menu Launch">
+        <article class="reel-card" data-youtube-id="GMoQWb3Hydc" data-title="Restaurant - New Menu Launch" tabindex="0" role="button" aria-label="Play Restaurant - New Menu Launch">
           <img class="reel-card__poster" src="images/social/12_new_dishes_thumb.jpg" alt="Restaurant - New Menu Launch" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -384,7 +389,7 @@
         </article>
 
         <!-- 02 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Apparel Brand - Digital Content I" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content I">
+        <article class="reel-card" data-youtube-id="KSCJ0CMN13s" data-title="Apparel Brand - Digital Content I" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content I">
           <img class="reel-card__poster" src="images/social/06_fashion_brand_1_thumb.jpg" alt="Apparel Brand - Digital Content I" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -399,7 +404,7 @@
         </article>
 
         <!-- 03 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Bar &amp; Lounge - Digital Content" tabindex="0" role="button" aria-label="Play Bar &amp; Lounge - Digital Content">
+        <article class="reel-card" data-youtube-id="iOvr2LmO90U" data-title="Bar &amp; Lounge - Digital Content" tabindex="0" role="button" aria-label="Play Bar &amp; Lounge - Digital Content">
           <img class="reel-card__poster" src="images/social/03_cocktail_1_thumb.jpg" alt="Bar &amp; Lounge - Digital Content" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -414,7 +419,7 @@
         </article>
 
         <!-- 04 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Apparel Brand - Digital Content II" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content II">
+        <article class="reel-card" data-youtube-id="iv11ZLbS3FY" data-title="Apparel Brand - Digital Content II" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content II">
           <img class="reel-card__poster" src="images/social/07_fashion_brand_2_thumb.jpg" alt="Apparel Brand - Digital Content II" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -429,7 +434,7 @@
         </article>
 
         <!-- 05 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Brunch Café - Digital Content" tabindex="0" role="button" aria-label="Play Brunch Café - Digital Content">
+        <article class="reel-card" data-youtube-id="YPvGrwotvyg" data-title="Brunch Café - Digital Content" tabindex="0" role="button" aria-label="Play Brunch Café - Digital Content">
           <img class="reel-card__poster" src="images/social/05_egg_benedict_thumb.jpg" alt="Brunch Café - Digital Content" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -444,7 +449,7 @@
         </article>
 
         <!-- 06 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Apparel Brand - Digital Content IV" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content IV">
+        <article class="reel-card" data-youtube-id="ng5UaZns9X8" data-title="Apparel Brand - Digital Content IV" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content IV">
           <img class="reel-card__poster" src="images/social/09_fashion_brand_4_thumb.jpg" alt="Apparel Brand - Digital Content IV" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -459,7 +464,7 @@
         </article>
 
         <!-- 07 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Specialty Café - New Menu Launch" tabindex="0" role="button" aria-label="Play Specialty Café - New Menu Launch">
+        <article class="reel-card" data-youtube-id="lPelN0Rksrc" data-title="Specialty Café - New Menu Launch" tabindex="0" role="button" aria-label="Play Specialty Café - New Menu Launch">
           <img class="reel-card__poster" src="images/social/11_new_coffee_bear_thumb.jpg" alt="Specialty Café - New Menu Launch" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -474,7 +479,7 @@
         </article>
 
         <!-- 08 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="ReGolf x Revival Cup - Tournament Launch Reel" tabindex="0" role="button" aria-label="Play ReGolf x Revival Cup - Tournament Launch Reel">
+        <article class="reel-card" data-youtube-id="bi6I6vHSVSE" data-title="ReGolf x Revival Cup - Tournament Launch Reel" tabindex="0" role="button" aria-label="Play ReGolf x Revival Cup - Tournament Launch Reel">
           <img class="reel-card__poster" src="images/social/regolf-revival-cup-tournament-launch-northview-ridge-surrey.jpeg" alt="ReGolf Revival Cup Tournament launch reel at Northview Ridge Golf Course Surrey BC" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -489,7 +494,7 @@
         </article>
 
         <!-- 09 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Korean Restaurant - Signature Dish Reel" tabindex="0" role="button" aria-label="Play Korean Restaurant - Signature Dish Reel">
+        <article class="reel-card" data-youtube-id="unb6LCVKMPo" data-title="Korean Restaurant - Signature Dish Reel" tabindex="0" role="button" aria-label="Play Korean Restaurant - Signature Dish Reel">
           <img class="reel-card__poster" src="images/social/13_sotbab_thumb.jpg" alt="Korean Restaurant - Signature Dish Reel" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -504,7 +509,7 @@
         </article>
 
         <!-- 10 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Apparel Brand - Digital Content V" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content V">
+        <article class="reel-card" data-youtube-id="WVBcXUFDJMo" data-title="Apparel Brand - Digital Content V" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content V">
           <img class="reel-card__poster" src="images/social/10_fashion_brand_5_thumb.jpg" alt="Apparel Brand - Digital Content V" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -519,7 +524,7 @@
         </article>
 
         <!-- 11 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Brunch Café - Social Media Campaign" tabindex="0" role="button" aria-label="Play Brunch Café - Social Media Campaign">
+        <article class="reel-card" data-youtube-id="fMBozccJdzw" data-title="Brunch Café - Social Media Campaign" tabindex="0" role="button" aria-label="Play Brunch Café - Social Media Campaign">
           <img class="reel-card__poster" src="images/social/02_cafe_opening_thumb.jpg" alt="Brunch Café - Social Media Campaign" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -534,7 +539,7 @@
         </article>
 
         <!-- 12 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="SeoulGift - Campaign &amp; Digital Content" tabindex="0" role="button" aria-label="Play SeoulGift - Campaign &amp; Digital Content">
+        <article class="reel-card" data-youtube-id="VCuIaHkQYaI" data-title="SeoulGift - Campaign &amp; Digital Content" tabindex="0" role="button" aria-label="Play SeoulGift - Campaign &amp; Digital Content">
           <img class="reel-card__poster" src="images/social/01_brand_launching_thumb.jpg" alt="SeoulGift - Campaign &amp; Digital Content" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -549,7 +554,7 @@
         </article>
 
         <!-- 13 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Apparel Brand - Digital Content III" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content III">
+        <article class="reel-card" data-youtube-id="5OdF6f6dAL8" data-title="Apparel Brand - Digital Content III" tabindex="0" role="button" aria-label="Play Apparel Brand - Digital Content III">
           <img class="reel-card__poster" src="images/social/08_fashion_brand_3_thumb.jpg" alt="Apparel Brand - Digital Content III" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -564,22 +569,17 @@
         </article>
 
         <!-- 14 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="ReGolf x Revival Cup - Tournament Event Recap" tabindex="0" role="button" aria-label="Play ReGolf x Revival Cup - Tournament Event Recap">
+        <article class="reel-card reel-card--static" data-title="ReGolf x Revival Cup - Tournament Event Recap" aria-label="ReGolf x Revival Cup - Tournament Event Recap">
           <img class="reel-card__poster" src="images/social/regolf-revival-cup-tournament-recap-golf-event-surrey.jpeg" alt="ReGolf Revival Cup Tournament event recap golf charity Surrey BC" loading="lazy" />
           <span class="reel-card__badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-            Reel
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16v14H4zM7 8h10v8H7z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Cover
           </span>
-          <div class="reel-card__play">
-            <div class="reel-card__play-btn">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
           <div class="reel-card__overlay"><h3 class="reel-card__title">ReGolf x Revival Cup - Tournament Event Recap</h3></div>
         </article>
 
         <!-- 15 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Bar &amp; Lounge - Holiday Reel Series" tabindex="0" role="button" aria-label="Play Bar &amp; Lounge - Holiday Reel Series">
+        <article class="reel-card" data-youtube-id="gxSAJ52mKuA" data-title="Bar &amp; Lounge - Holiday Reel Series" tabindex="0" role="button" aria-label="Play Bar &amp; Lounge - Holiday Reel Series">
           <img class="reel-card__poster" src="images/social/04_cocktail_2_thumb.jpg" alt="Bar &amp; Lounge - Holiday Reel Series" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -594,7 +594,7 @@
         </article>
 
         <!-- 16 -->
-        <article class="reel-card" data-vimeo-id="76979871" data-title="Golf Course - Seasonal Campaign Content" tabindex="0" role="button" aria-label="Play Golf Course - Seasonal Campaign Content">
+        <article class="reel-card" data-youtube-id="FRBlm50Mi6Y" data-title="Golf Course - Seasonal Campaign Content" tabindex="0" role="button" aria-label="Play Golf Course - Seasonal Campaign Content">
           <img class="reel-card__poster" src="images/social/14_venue_thumb.jpg" alt="Golf Course - Seasonal Campaign Content" loading="lazy" />
           <span class="reel-card__badge">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
@@ -829,7 +829,7 @@
     })();
 
     /* ────────────────────────────────────────────
-       Reel modal — Vimeo embed (vertical)
+       Reel modal — YouTube Shorts / Vimeo embed (vertical 9:16)
        ──────────────────────────────────────────── */
     (function () {
       const modal      = document.getElementById('reelModal');
@@ -837,12 +837,20 @@
       const iframeWrap = document.getElementById('reelModalIframeWrap');
       const captionEl  = document.getElementById('reelModalCaption');
 
-      function openModal(vimeoId, title) {
-        if (!vimeoId) return;
-        const src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
-        iframeWrap.innerHTML =
-          `<iframe src="${src}" title="Reel video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
-        captionEl.textContent = title || '';
+      function buildEmbed(card) {
+        const youtubeId = card.dataset.youtubeId;
+        if (youtubeId) {
+          const src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+          return `<iframe src="${src}" title="YouTube Shorts player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        }
+        return '';
+      }
+
+      function openModal(card) {
+        const html = buildEmbed(card);
+        if (!html) return;
+        iframeWrap.innerHTML  = html;
+        captionEl.textContent = card.dataset.title || '';
         modal.classList.add('is-open');
         document.body.classList.add('modal-open');
       }
@@ -854,13 +862,13 @@
       }
 
       document.querySelectorAll('.reel-card').forEach((card) => {
-        const vimeoId = card.dataset.vimeoId;
-        const title   = card.dataset.title;
-        card.addEventListener('click', () => openModal(vimeoId, title));
+        // Skip static (no-embed) cards
+        if (!card.dataset.youtubeId) return;
+        card.addEventListener('click', () => openModal(card));
         card.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openModal(vimeoId, title);
+            openModal(card);
           }
         });
       });
@@ -960,6 +968,7 @@
     })();
   </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
