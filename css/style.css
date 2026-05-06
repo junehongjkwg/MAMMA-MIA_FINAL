@@ -640,8 +640,24 @@ input, textarea, select { font-family: inherit; }
     flex-shrink: 0;
   }
 
-  /* MOBILE NAV FIX: CTA 버튼은 공간 부족으로 모바일에서 숨김 */
-  .nav__cta { display: none; }
+  /* MOBILE NAV FIX: CTA 버튼(Book a Call)은 모바일에서 완전 숨김 */
+  .nav__cta,
+  .nav .nav__cta,
+  .nav__inner .nav__cta,
+  a.nav__cta,
+  .nav__cta.btn,
+  .nav__cta.btn-outline {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
 
   /* MOBILE NAV FIX: 햄버거 버튼 숨김 (상단 메뉴로 대체) */
   .nav__hamburger { display: none !important; }
