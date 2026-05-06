@@ -601,9 +601,58 @@ input, textarea, select { font-family: inherit; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer__top { grid-template-columns: 1fr 1fr; }
 }
+
+/* ============================================
+   MOBILE NAV FIX — 모바일에서도 상단 메뉴 항상 표시
+   햄버거 메뉴 대신 ABOUT US / PRICE PLAN /
+   PORTFOLIO / CONTACT US가 fixed로 항상 보이도록
+   ============================================ */
 @media (max-width: 768px) {
-  .nav__links, .nav__cta { display: none; }
-  .nav__hamburger { display: flex; }
+  /* MOBILE NAV FIX: 네비 높이 컴팩트하게 축소 */
+  :root { --nav-height: 56px; }
+
+  /* MOBILE NAV FIX: 네비 좌우 패딩 축소 */
+  .nav {
+    padding: 0 14px;
+  }
+
+  /* MOBILE NAV FIX: 로고 크기 축소 (메뉴 공간 확보) */
+  .nav__logo { font-size: 16px; gap: 6px; }
+  .nav__logo-text { font-size: 16px; letter-spacing: 0.04em; }
+
+  /* MOBILE NAV FIX: 메뉴 링크 항상 표시 (이전: display: none) */
+  .nav__links {
+    display: flex !important;
+    gap: 14px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav__links::-webkit-scrollbar { display: none; }
+
+  /* MOBILE NAV FIX: 메뉴 링크 폰트 축소 */
+  .nav__link {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* MOBILE NAV FIX: CTA 버튼은 공간 부족으로 모바일에서 숨김 */
+  .nav__cta { display: none; }
+
+  /* MOBILE NAV FIX: 햄버거 버튼 숨김 (상단 메뉴로 대체) */
+  .nav__hamburger { display: none !important; }
+
+  /* MOBILE NAV FIX: 기존 모바일 풀스크린 메뉴 비활성화 */
+  .nav__mobile-menu { display: none !important; }
+
+  /* MOBILE NAV FIX: 네비 항상 보이도록 숨김 효과 무력화 */
+  .nav.nav--hidden { transform: translateY(0) !important; }
+
+  /* Existing mobile responsive styles */
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .footer__top { grid-template-columns: 1fr; gap: 40px; }
   .footer__brand-name { font-size: clamp(40px, 12vw, 80px); }
@@ -621,9 +670,9 @@ input, textarea, select { font-family: inherit; }
   }
   .loader-logo { font-size: clamp(28px, 9vw, 48px); }
 
-  /* Touch target minimum (Apple HIG 44px) */
-  .btn, .nav__hamburger, .filter-btn, .pricing-tab,
-  .footer__col-link, .nav__mobile-link {
+  /* Touch target minimum (Apple HIG 44px) — 단, 상단 nav 링크는 제외 */
+  .btn, .filter-btn, .pricing-tab,
+  .footer__col-link {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
@@ -646,9 +695,13 @@ input, textarea, select { font-family: inherit; }
   .footer__brand-name { font-size: clamp(36px, 14vw, 64px); margin-bottom: 32px; }
   .footer__col-title { font-size: 11px; }
   .footer__col-link, .footer__contact-value { font-size: 13px; }
-  .nav__inner { padding: 0 16px; }
-  .nav__logo-text { font-size: 14px; letter-spacing: 0.04em; }
-  .nav__mobile-link { font-size: 24px; }
+
+  /* MOBILE NAV FIX: 초소형 화면에서도 상단 메뉴 유지 */
+  .nav { padding: 0 12px; }
+  .nav__inner { padding: 0; }
+  .nav__logo-text { font-size: 13px; letter-spacing: 0.02em; }
+  .nav__links { gap: 10px; }
+  .nav__link { font-size: 9px; letter-spacing: 0.05em; }
 }
 
 /* ---------- Tap highlight & touch behavior ---------- */

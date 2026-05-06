@@ -21,18 +21,27 @@
   position: sticky;
   top: var(--nav-height);
   z-index: 100;
+  overflow: hidden; /* MOBILE SWIPE FIX */
 }
 .filter-bar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  overflow: hidden; /* MOBILE SWIPE FIX */
 }
 .filter-bar__inner {
   display: flex;
   gap: 0;
   overflow-x: auto;
+  overflow-y: hidden; /* MOBILE SWIPE FIX */
+  flex-wrap: nowrap; /* MOBILE SWIPE FIX */
+  width: 100%; /* MOBILE SWIPE FIX */
+  min-width: 0; /* MOBILE SWIPE FIX */
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; /* MOBILE SWIPE FIX */
+  touch-action: pan-x; /* MOBILE SWIPE FIX */
+  overscroll-behavior-x: contain; /* MOBILE SWIPE FIX */
 }
 .filter-bar__inner::-webkit-scrollbar { display: none; }
 .filter-btn {
@@ -46,6 +55,8 @@
   border-bottom: 2px solid transparent;
   transition: color var(--transition-fast), border-color var(--transition-fast);
   white-space: nowrap;
+  user-select: none; /* MOBILE SWIPE FIX */
+  -webkit-user-select: none; /* MOBILE SWIPE FIX */
 }
 .filter-btn:hover { color: var(--color-black); }
 .filter-btn.active {
@@ -226,8 +237,25 @@
   }
   .port-card--wide { grid-column: span 1; }
   .port-card--tall { grid-row: span 1; }
-  .filter-bar .container { flex-direction: column; align-items: flex-start; gap: 0; }
-  .filter-bar__count { padding: 10px 0; }
+
+  /* MOBILE SWIPE FIX */
+  .filter-bar .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .filter-bar__inner {
+    width: 100%;
+    padding: 0 16px;
+    scroll-padding-left: 16px;
+    scroll-padding-right: 16px;
+  }
+  .filter-bar__count {
+    width: 100%;
+    padding: 10px 16px;
+  }
 }
 
 /* ---------- Small Mobile (≤ 460px) ---------- */
@@ -238,7 +266,8 @@
   .port-hero .page-hero__sub { font-size: 14px; line-height: 1.55; }
 
   .filter-btn { padding: 14px 14px; font-size: 10px; letter-spacing: 0.08em; min-height: 44px; }
-  .filter-bar__count { font-size: 11px; padding: 8px 0; }
+  .filter-bar__inner { padding: 0 12px; }
+  .filter-bar__count { font-size: 11px; padding: 8px 12px; }
 
   .portfolio-grid {
     grid-template-columns: 1fr;
