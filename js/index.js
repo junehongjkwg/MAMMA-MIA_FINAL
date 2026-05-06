@@ -253,13 +253,28 @@
       updateCounter();
     }
   } else if (hscroll && htrack && isMobile) {
-    // Mobile: hide nav arrows and counter (gallery doesn't need them)
+    // Mobile: use native horizontal scroll instead of JS drag.
+    // Hide arrow buttons but keep the counter (e.g. 09 / 10).
     if (btnPrev) btnPrev.style.display = 'none';
     if (btnNext) btnNext.style.display = 'none';
-    const counterEl = document.querySelector('.work-nav__counter, .recent-work__nav');
-    // Reset any inline transform on the track so CSS gallery layout takes over
+
+    // Reset any inline transform/transition so native scrolling can work.
     htrack.style.transform = '';
     htrack.style.transition = '';
+
+    const cards = htrack.querySelectorAll('.work-card');
+    const totalCards = cards.length;
+    if (navTotalEl) navTotalEl.textContent = String(totalCards).padStart(2, '0');
+
+    // Update counter as the user swipes through cards.
+    function updateMobileCounter() {
+      const cardW = cards[0] ? cards[0].offsetWidth + 24 : 300;
+      const idx = Math.round(hscroll.scrollLeft / cardW);
+      const clamped = Math.max(0, Math.min(totalCards - 1, idx));
+      if (navCurEl) navCurEl.textContent = String(clamped + 1).padStart(2, '0');
+    }
+    updateMobileCounter();
+    hscroll.addEventListener('scroll', updateMobileCounter, { passive: true });
   }
 
   /* ================================================================
