@@ -729,53 +729,130 @@ input, textarea, select { font-family: inherit; }
 }
 
 /* ============================================
+   MOBILE STICKY-SERVICES FIX — 인덱스 페이지
+   데스크톱: 좌측 sticky 이미지 + 우측 4개 패널
+   모바일: sticky 해제, 세로로 4개 서비스 수직 스택
+   각 서비스는 "대표 이미지 1장 + 설명 텍스트" 구조
+   ============================================ */
+@media (max-width: 900px) {
+  /* 1. 그리드 레이아웃 해제 — 세로 스택 */
+  .sticky-services {
+    grid-template-columns: 1fr !important;
+    display: block !important;
+  }
+
+  /* 2. 좌측 sticky 이미지 패널 — sticky 해제, 잠시 숨김 (아래에서 각 서비스별 대표 이미지로 대체) */
+  .sticky-services__visual {
+    display: none !important;
+  }
+
+  /* 3. 우측 패널 영역 전체 폭 사용 */
+  .sticky-services__panels {
+    border-left: none !important;
+    width: 100%;
+  }
+
+  /* 4. 각 서비스 패널 — 높이 자동, 아래에 대표 이미지를 추가 */
+  .sticky-services__panel {
+    min-height: auto !important;
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .sticky-services__panel:last-child { border-bottom: none; }
+
+  .sticky-services__panel-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    padding: clamp(40px, 8vw, 64px) clamp(24px, 5vw, 40px) clamp(32px, 6vw, 48px) !important;
+    gap: 18px;
+  }
+
+  /* 5. 각 서비스 패널 위쪽에 대표 이미지 추가 (data-index 기준) */
+  .sticky-services__panel::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 56vw;
+    max-height: 380px;
+    min-height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+  }
+  .sticky-services__panel[data-index="0"]::before {
+    background-image: url('../images/branding/01_branding_anthracite.webp');
+  }
+  .sticky-services__panel[data-index="1"]::before {
+    background-image: url('../images/social/01_brand_launching_thumb.jpg');
+  }
+  .sticky-services__panel[data-index="2"]::before {
+    background-image: url('../images/photo/food/01_food_burger.jpg');
+  }
+  .sticky-services__panel[data-index="3"]::before {
+    background-image: url('../images/video/cars-and-hoops-luxury-supercar-event-vancouver.jpeg');
+  }
+
+  /* 6. 서비스 번호 레이블 (01, 02, 03, 04) 더 눈에 띄게 */
+  .sticky-services__num {
+    font-size: 13px !important;
+    letter-spacing: 0.18em;
+    color: var(--color-accent) !important;
+  }
+
+  /* 7. 제목 크기 모바일 최적화 */
+  .sticky-services__title {
+    font-size: clamp(40px, 11vw, 64px) !important;
+    line-height: 0.95 !important;
+  }
+
+  /* 8. 설명 텍스트 가독성 */
+  .sticky-services__desc {
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    color: rgba(255,255,255,0.7) !important;
+    max-width: 100% !important;
+  }
+
+  /* 9. 서비스 항목 리스트 */
+  .sticky-services__list {
+    padding-top: 16px !important;
+    gap: 10px;
+  }
+  .sticky-services__list li {
+    font-size: 13px !important;
+  }
+
+  /* 10. See Work 링크 */
+  .sticky-services__link {
+    margin-top: 8px;
+    font-size: 12px !important;
+  }
+}
+
+/* ============================================
    MOBILE PROMO BAR FIX — 상단 프로모 바
-   "Special Pricing Through September.
-    Get in Touch to Learn More."
-   두 문장을 마침표 기준으로 2줄로 분리
-   ::before/::after로 기존 텍스트 교체 — HTML 수정 불필요
+   "Special Pricing Through September. Get in Touch to Learn More."
+   단어 단위 줄바꿈을 허용해서
+   좋은 가독성을 만드는 방법 —
+   word-spacing으로 "More." 다음에 강제 줄바꿈
    ============================================ */
 @media (max-width: 768px) {
-  /* 기존 텍스트 숨김 (접근성을 위해 스크린리더에는 남김) */
   .promo-bar__text {
-    font-size: 0;        /* 원래 텍스트 수치적으로 숨김 */
-    line-height: 0;
-    color: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
     text-align: center;
-  }
-  /* 첫째 줄: Special Pricing Through September. */
-  .promo-bar__text::before {
-    content: "Special Pricing Through September.";
-    display: block;
-    font-family: var(--font-sans, 'Inter', sans-serif);
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 0 auto;
     font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-    color: #fff;
-  }
-  /* 둘째 줄: Get in Touch to Learn More. */
-  .promo-bar__text::after {
-    content: "Get in Touch to Learn More.";
-    display: block;
-    font-family: var(--font-sans, 'Inter', sans-serif);
-    font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-    color: #fff;
+    word-spacing: normal;
   }
 }
 
 @media (max-width: 460px) {
-  /* 초소형 화면에서 폰트 더 축소 */
-  .promo-bar__text::before,
-  .promo-bar__text::after {
+  .promo-bar__text {
     font-size: 11.5px;
-    line-height: 1.35;
+    line-height: 1.45;
+    max-width: 240px;
   }
 }
