@@ -734,6 +734,11 @@ input, textarea, select { font-family: inherit; }
    GPU 가속을 명시적으로 강제해서 부드러운 페이드 효과 보장
    ============================================ */
 @media (max-width: 900px) {
+  /* 부모 컨테이너 transform 차단을 완화시켜 자식 opacity transition이 보이도록 */
+  .hero__parallax {
+    will-change: transform !important;
+    transform: translateZ(0);
+  }
   .hero__slides {
     position: relative !important;
     width: 100% !important;
@@ -747,19 +752,55 @@ input, textarea, select { font-family: inherit; }
     height: 100% !important;
     object-fit: cover !important;
     object-position: center 35% !important;
-    opacity: 0;
-    /* 모바일에서는 transition 조금 더 길게서 부드러운 페이드 보장 */
+    /* JS에서 인라인 opacity를 관리하므로 여기 기본값 제거 */
     transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1) !important;
-    /* GPU 가속 강제 — 사파리에서 자주 눌리는 문제 방지 */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     will-change: opacity;
   }
+  /* 첫 장 외엔 명시적으로 숨김 (JS가 설정하기 전 아주 잠깐 보이는 것 방지) */
+  .hero__slide:not(.active) {
+    opacity: 0;
+  }
   .hero__slide.active {
-    opacity: 1 !important;
+    opacity: 1;
     z-index: 1;
+  }
+}
+
+/* ============================================
+   MOBILE WORK HSCROLL FIX — Recent Work 가로 스와이프
+   가로 스와이프 시 세로 흔들림 방지
+   touch-action으로 브라우저에게 가로 스크롤만 결정되도록 알림
+   ============================================ */
+@media (max-width: 900px) {
+  .work-hscroll {
+    /* 가로는 JS가 제어, 세로는 페이지 스크롤 허용 */
+    touch-action: pan-y;
+    overscroll-behavior-x: contain;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    /* 모바일에서 드래그 중 세로 흔들림 완전 제거 */
+    -webkit-tap-highlight-color: transparent;
+  }
+  .work-hscroll__track {
+    /* GPU 가속으로 가로 이동 부드러운게 */
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  .work-card {
+    /* 카드 자체에도 드래그 이미지 메뉴 등 방지 */
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+  }
+  .work-card img {
+    -webkit-user-drag: none;
+    pointer-events: none;
   }
 }
 
