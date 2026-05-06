@@ -1,24 +1,24 @@
 /* ============================================
-   MAMMA MIA — Index Page JS  v5
-   Sticky services · Horizontal drag scroll
-   Parallax · Process bars · Work nav arrows
+   MAMMA MIA - Index Page JS  v6
+   Sticky services, Horizontal drag scroll,
+   Parallax, Process bars, Work nav arrows
    ============================================ */
 (function () {
   'use strict';
 
   /* ================================================================
-     0. HERO SLIDESHOW — 1.5초 간격 자동 전환
-     모바일 호환성 강화: 각 슬라이드에 직접 opacity를 설정하고
-     강제 리플로우로 사파리 레이어 캐시 버그 회피
+     0. HERO SLIDESHOW - 1.5s interval auto rotate
+     Mobile compatibility: set inline opacity directly on each slide
+     and force reflow to bypass Safari layer cache bug.
   ================================================================ */
   const heroSlideEls = document.querySelectorAll('.hero__slide');
   if (heroSlideEls.length > 1) {
-    // 초기 상태 명시적 설정
+    // Initial state explicit setup
     heroSlideEls.forEach((el, i) => {
       el.style.opacity = i === 0 ? '1' : '0';
       el.style.transition = 'opacity 0.8s cubic-bezier(0.4,0,0.2,1)';
       el.style.willChange = 'opacity';
-      // GPU 레이어 강제
+      // Force GPU layer
       el.style.transform = 'translate3d(0,0,0)';
       el.style.backfaceVisibility = 'hidden';
     });
@@ -29,14 +29,15 @@
       heroSlideIdx = (heroSlideIdx + 1) % heroSlideEls.length;
       const next = heroSlideEls[heroSlideIdx];
 
-      // 클래스와 인라인 스타일 둘 다 적용 — CSS가 아닌 다른 메디어 쿼리가 opacity를 덮어도 동작
+      // Apply both class and inline style so other media queries cannot
+      // override the opacity transition.
       prev.classList.remove('active');
       prev.style.opacity = '0';
 
       next.classList.add('active');
       next.style.opacity = '1';
 
-      // 강제 리플로우 (모바일 사파리에서 opacity transition이 무시되는 경우 방지)
+      // Force reflow to prevent Safari from skipping the transition.
       void next.offsetHeight;
     }, 1500);
   }
@@ -66,36 +67,36 @@
   }
 
   /* ================================================================
-     2. STICKY SERVICES — 스크롤로 서비스 전환 + 5장 자동 슬라이드
+     2. STICKY SERVICES - scroll switches services + 5 image rotation
   ================================================================ */
   const svcPanels     = document.querySelectorAll('.sticky-services__panel');
   const svcImgs       = document.querySelectorAll('.sticky-services__img');
   const svcCounterCur = document.getElementById('svcCounterCur');
   const svcDots       = document.querySelectorAll('.sticky-services__dot');
 
-  // 현재 활성 서비스 인덱스
+  // Active service index
   let currentService  = 0;
-  let slideIndex      = 0;    // 현재 서비스 내 슬라이드 번호
+  let slideIndex      = 0;    // current slide number within the service
   let slideTimer      = null;
 
-  // 특정 서비스의 슬라이드 이미지 배열을 반환
+  // Returns the array of slide images for a given service
   function getServiceImgs(serviceIdx) {
     return Array.from(svcImgs).filter(
       img => parseInt(img.dataset.service, 10) === serviceIdx
     );
   }
 
-  // 서비스 내 슬라이드를 slideIdx 번호로 전환
+  // Switch the slide within a service to slideIdx
   function showSlide(serviceIdx, slideIdx) {
     const imgs = getServiceImgs(serviceIdx);
     svcImgs.forEach(img => img.classList.remove('active'));
     if (imgs[slideIdx]) imgs[slideIdx].classList.add('active');
 
-    // 도트 업데이트
+    // Dots update
     svcDots.forEach((dot, i) => dot.classList.toggle('active', i === slideIdx));
   }
 
-  // 자동 슬라이드 시작 (5초 간격)
+  // Start auto slide rotation
   function startAutoSlide(serviceIdx) {
     stopAutoSlide();
     const imgs = getServiceImgs(serviceIdx);
@@ -114,7 +115,7 @@
   }
 
   if (svcPanels.length && svcImgs.length) {
-    // 초기 실행
+    // Initial run
     startAutoSlide(0);
 
     const panelObs = new IntersectionObserver((entries) => {
@@ -124,17 +125,17 @@
         const panel = entry.target;
         const idx   = parseInt(panel.dataset.index, 10);
 
-        // 패널 텍스트 인트로
+        // Panel text intro
         panel.querySelector('.sticky-services__panel-inner')
              .classList.add('in-view');
 
-        // 서비스 전환 시에만 슬라이드 리셋
+        // Reset slides only when switching services
         if (idx !== currentService) {
           currentService = idx;
           startAutoSlide(idx);
         }
 
-        // 카운터 업데이트
+        // Counter update
         if (svcCounterCur) {
           svcCounterCur.textContent = String(idx + 1).padStart(2, '0');
         }
@@ -145,8 +146,9 @@
   }
 
   /* ================================================================
-     3. HORIZONTAL DRAG SCROLL — Recent Work
-        드래그 + 관성 + 화살표 버튼 + 카운터
+     3. HORIZONTAL DRAG SCROLL - Recent Work
+        Drag + momentum + arrow buttons + counter
+        Mobile: disabled (CSS converts the section to a vertical gallery)
   ================================================================ */
   const hscroll      = document.getElementById('workHScroll');
   const htrack       = document.getElementById('workTrack');
@@ -155,7 +157,10 @@
   const navCurEl     = document.getElementById('workNavCur');
   const navTotalEl   = document.getElementById('workNavTotal');
 
-  if (hscroll && htrack) {
+  // Detect mobile: skip horizontal drag init when in vertical gallery mode
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+  if (hscroll && htrack && !isMobile) {
     const cards        = htrack.querySelectorAll('.work-card');
     const totalCards   = cards.length;
     let currentX       = 0;
@@ -164,12 +169,12 @@
     let velX           = 0;
     let lastX          = 0;
     let rafId          = null;
-    let activeCardIdx  = 0;   // 현재 보이는 카드 인덱스
+    let activeCardIdx  = 0;   // current visible card index
 
-    // 총 카드 수 표시
+    // Total card count display
     if (navTotalEl) navTotalEl.textContent = String(totalCards).padStart(2, '0');
 
-    /* ---------- 유틸 ---------- */
+    /* ---------- Utilities ---------- */
     function getMaxScroll() {
       return -(htrack.scrollWidth - hscroll.clientWidth);
     }
@@ -182,18 +187,16 @@
       htrack.style.transform  = `translateX(${currentX}px)`;
     }
     function updateCounter() {
-      // 카드 너비 기준으로 현재 인덱스 계산
       const cardW = cards[0] ? cards[0].offsetWidth + 24 : 300; // gap=24
       const idx   = Math.round(-currentX / cardW);
       activeCardIdx = Math.max(0, Math.min(totalCards - 1, idx));
       if (navCurEl) navCurEl.textContent = String(activeCardIdx + 1).padStart(2, '0');
-      // 버튼 disabled 상태
       if (btnPrev) btnPrev.disabled = activeCardIdx === 0;
       if (btnNext) btnNext.disabled = activeCardIdx >= totalCards - 1;
     }
     updateCounter();
 
-    /* ---------- 화살표 버튼 ---------- */
+    /* ---------- Arrow buttons ---------- */
     function scrollToCard(idx) {
       const cardW = cards[0] ? cards[0].offsetWidth + 24 : 300;
       applyX(-(idx * cardW), true);
@@ -204,14 +207,14 @@
     }
 
     if (btnPrev) {
-      btnPrev.disabled = true; // 초기
+      btnPrev.disabled = true;
       btnPrev.addEventListener('click', () => scrollToCard(activeCardIdx - 1));
     }
     if (btnNext) {
       btnNext.addEventListener('click', () => scrollToCard(activeCardIdx + 1));
     }
 
-    /* ---------- 마우스 드래그 ---------- */
+    /* ---------- Mouse drag (desktop only) ---------- */
     hscroll.addEventListener('mousedown', (e) => {
       isDragging = true;
       startX = e.clientX - currentX;
@@ -234,59 +237,7 @@
       momentum();
     });
 
-    /* ---------- 터치 (가로 전용 영역, 세로 흔들림 완전 차단) ---------- */
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchActive = false;
-
-    hscroll.addEventListener('touchstart', (e) => {
-      const t = e.touches[0];
-      touchStartX = t.clientX;
-      touchStartY = t.clientY;
-      touchActive = true;
-      isDragging = true;
-      startX = t.clientX - currentX;
-      lastX  = t.clientX;
-      velX = 0;
-      cancelAnimationFrame(rafId);
-      htrack.style.transition = 'none';
-    }, { passive: true });
-
-    // touchmove는 가로 전용 — 세로 움직임은 무조건 차단
-    hscroll.addEventListener('touchmove', (e) => {
-      if (!touchActive) return;
-      const t = e.touches[0];
-
-      // 변위 계산
-      const dx = t.clientX - touchStartX;
-      const dy = t.clientY - touchStartY;
-
-      // 키 포인트: 가로 움직임이 조금이라도 감지되면 세로 움직임 무시하고 세로 스크롤을 차단
-      // (touch-action: pan-x 덕분에 브라우저가 이미 세로 스크롤을 넘겼으며 e.preventDefault로 확실히 차단)
-      if (Math.abs(dx) > 3) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
-      velX     = t.clientX - lastX;
-      lastX    = t.clientX;
-      currentX = clampX(t.clientX - startX);
-      htrack.style.transform = `translateX(${currentX}px)`;
-    }, { passive: false });
-
-    hscroll.addEventListener('touchend', () => {
-      if (!touchActive) return;
-      touchActive = false;
-      isDragging = false;
-      momentum();
-    }, { passive: true });
-
-    hscroll.addEventListener('touchcancel', () => {
-      touchActive = false;
-      isDragging = false;
-    }, { passive: true });
-
-    /* ---------- 관성 + 카드 스냅 ---------- */
+    /* ---------- Momentum + card snap ---------- */
     function momentum() {
       if (Math.abs(velX) > 1.5) {
         velX    *= 0.91;
@@ -295,13 +246,20 @@
         htrack.style.transform  = `translateX(${currentX}px)`;
         rafId = requestAnimationFrame(momentum);
       } else {
-        // 카드 스냅
         const cardW = cards[0] ? cards[0].offsetWidth + 24 : 300;
         const idx   = Math.round(-currentX / cardW);
         scrollToCard(Math.max(0, Math.min(totalCards - 1, idx)));
       }
       updateCounter();
     }
+  } else if (hscroll && htrack && isMobile) {
+    // Mobile: hide nav arrows and counter (gallery doesn't need them)
+    if (btnPrev) btnPrev.style.display = 'none';
+    if (btnNext) btnNext.style.display = 'none';
+    const counterEl = document.querySelector('.work-nav__counter, .recent-work__nav');
+    // Reset any inline transform on the track so CSS gallery layout takes over
+    htrack.style.transform = '';
+    htrack.style.transition = '';
   }
 
   /* ================================================================
@@ -318,22 +276,24 @@
   }
 
   /* ================================================================
-     5. WORK CARD — 미세 parallax hover
+     5. WORK CARD - subtle parallax hover (desktop only)
   ================================================================ */
-  document.querySelectorAll('.work-card').forEach(card => {
-    const img = card.querySelector('img');
-    if (!img) return;
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 8;
-      const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 8;
-      img.style.transform = `scale(1.06) translate(${x * 0.4}px, ${y * 0.4}px)`;
+  if (!isMobile) {
+    document.querySelectorAll('.work-card').forEach(card => {
+      const img = card.querySelector('img');
+      if (!img) return;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 8;
+        const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 8;
+        img.style.transform = `scale(1.06) translate(${x * 0.4}px, ${y * 0.4}px)`;
+      });
+      card.addEventListener('mouseleave', () => { img.style.transform = ''; });
     });
-    card.addEventListener('mouseleave', () => { img.style.transform = ''; });
-  });
+  }
 
   /* ================================================================
-     6. MARQUEE PAUSE ON HOVER (v13 — CSS-only fallback)
+     6. MARQUEE PAUSE ON HOVER
   ================================================================ */
   const mtrack = document.getElementById('marqueeTrack');
   if (mtrack) {
@@ -342,7 +302,7 @@
   }
 
   /* ================================================================
-     7. NAV THEME SWITCH — hero 벗어나면 밝은 nav
+     7. NAV THEME SWITCH - bright nav once past hero
   ================================================================ */
   const nav  = document.getElementById('mainNav');
   const hero = document.querySelector('.hero');
