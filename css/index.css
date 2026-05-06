@@ -756,33 +756,33 @@
     min-height: 110px !important;
     order: 1 !important;
     background-repeat: no-repeat, no-repeat, no-repeat !important;
-    background-size: calc(100%/3) 100%, calc(100%/3) 100%, calc(100%/3) 100% !important;
-    background-position: 0% center, 50% center, 100% center !important;
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 100% !important;
+    background-position: left center, center center, right center !important;
     background-color: #000 !important;
   }
   .sticky-services__panel[data-index="0"]::after {
     background-image:
-      url('../images/branding/02_il_forno_kitchen_identity.jpg'),
+      url('../images/branding/02_kitchen_il_forno.webp'),
       url('../images/branding/03_el_molino_brand_deck.jpg'),
       url('../images/branding/04_la_foret_ig.jpg') !important;
   }
   .sticky-services__panel[data-index="1"]::after {
     background-image:
       url('../images/social/02_cafe_opening_thumb.jpg'),
-      url('../images/social/03_apparel_brand_thumb.jpg'),
-      url('../images/social/04_bar_lounge_thumb.jpg') !important;
+      url('../images/social/06_fashion_brand_1_thumb.jpg'),
+      url('../images/social/03_cocktail_1_thumb.jpg') !important;
   }
   .sticky-services__panel[data-index="2"]::after {
     background-image:
       url('../images/photo/food/06_food_martini_cocktail.jpg'),
-      url('../images/photo/product/01_apparel_product.jpg'),
-      url('../images/photo/product/02_engagement_ring.jpg') !important;
+      url('../images/photo/product/01_apparel_1.jpg'),
+      url('../images/photo/product/10_engagement_ring.webp') !important;
   }
   .sticky-services__panel[data-index="3"]::after {
     background-image:
-      url('../images/video/dl-acro-brand-campaign-film.jpeg'),
-      url('../images/video/f-diary-perfume-beauty-campaign-film.jpeg'),
-      url('../images/video/mcst-kocca-wild-vr-content.jpeg') !important;
+      url('../images/video/04_dl_acro_1.webp'),
+      url('../images/video/06_f_diary_perfume.webp'),
+      url('../images/video/08_mcst_kocca_wild_vr.jpg') !important;
   }
 
   /* 7. Text panel inner — comes AFTER hero & thumbnails */

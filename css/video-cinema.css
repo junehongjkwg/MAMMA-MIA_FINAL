@@ -437,30 +437,35 @@ body.modal-open {
    ============================================================ */
 @media (max-width: 768px) {
   body.video-page .cinema-reel,
-  main.cinema-reel { padding: 0 0 48px !important; }
+  main.cinema-reel { padding: 0 0 24px !important; }
 
   body.video-page .video-hero,
-  header.video-hero { padding: calc(var(--nav-height, 72px) + 60px) 0 40px !important; }
+  header.video-hero { padding: calc(var(--nav-height, 72px) + 56px) 0 28px !important; }
 
   body.video-page .reel-item,
   .cinema-reel .reel-item,
-  article.reel-item { margin-bottom: 28px !important; }
+  article.reel-item {
+    margin-bottom: 18px !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 
   body.video-page .reel-item__index-row,
   .cinema-reel .reel-item__index-row {
-    padding: 10px 0 10px !important;
-    margin-bottom: 10px !important;
+    padding: 8px 0 8px !important;
+    margin-bottom: 8px !important;
   }
 
   body.video-page .reel-item__meta,
   .cinema-reel .reel-item__meta {
     flex-direction: column !important;
-    gap: 10px !important;
-    padding-top: 12px !important;
+    gap: 8px !important;
+    padding-top: 8px !important;
   }
 
   body.video-page .reel-item__credits,
-  .cinema-reel .reel-item__credits { gap: 14px !important; }
+  .cinema-reel .reel-item__credits { gap: 10px !important; }
 
   body.video-page .reel-item__desc,
   .cinema-reel .reel-item__desc {
@@ -471,27 +476,32 @@ body.modal-open {
 
 @media (max-width: 460px) {
   body.video-page .cinema-reel,
-  main.cinema-reel { padding: 0 0 36px !important; }
+  main.cinema-reel { padding: 0 0 18px !important; }
 
   body.video-page .reel-item,
   .cinema-reel .reel-item,
-  article.reel-item { margin-bottom: 22px !important; }
+  article.reel-item {
+    margin-bottom: 14px !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 
   body.video-page .reel-item__index-row,
   .cinema-reel .reel-item__index-row {
-    padding: 8px 0 8px !important;
-    margin-bottom: 8px !important;
+    padding: 6px 0 6px !important;
+    margin-bottom: 6px !important;
   }
 
   body.video-page .reel-item__meta,
   .cinema-reel .reel-item__meta {
-    gap: 8px !important;
-    padding-top: 10px !important;
+    gap: 6px !important;
+    padding-top: 6px !important;
   }
 
   body.video-page .reel-item__desc,
   .cinema-reel .reel-item__desc {
     font-size: 13.5px !important;
-    line-height: 1.5 !important;
+    line-height: 1.45 !important;
   }
 }
