@@ -66,7 +66,7 @@
   }
 
   /* ================================================================
-     2. STICKY SERVICES — 스크롤로 서비스 전환 + 5장 자동 슬라이드쌌
+     2. STICKY SERVICES — 스크롤로 서비스 전환 + 5장 자동 슬라이드
   ================================================================ */
   const svcPanels     = document.querySelectorAll('.sticky-services__panel');
   const svcImgs       = document.querySelectorAll('.sticky-services__img');
@@ -95,7 +95,7 @@
     svcDots.forEach((dot, i) => dot.classList.toggle('active', i === slideIdx));
   }
 
-  // 자동 슬라이드쌌 시작 (5초 간격)
+  // 자동 슬라이드 시작 (5초 간격)
   function startAutoSlide(serviceIdx) {
     stopAutoSlide();
     const imgs = getServiceImgs(serviceIdx);
