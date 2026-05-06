@@ -381,21 +381,33 @@ body.modal-open {
 
 /* Responsive ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  .reel-item { margin-bottom: 64px; }
-  .reel-item__index-row { padding: 16px 0 14px; margin-bottom: 16px; }
-  .reel-item__meta { flex-direction: column; gap: 18px; }
-  .reel-item__credits { gap: 18px; }
+  /* Section container — tighter top/bottom */
+  .cinema-reel { padding: 0 0 48px; }
+  .video-hero { padding: calc(var(--nav-height, 72px) + 60px) 0 40px; }
+
+  /* Reel item — much tighter spacing between videos */
+  .reel-item { margin-bottom: 28px; }
+  .reel-item__index-row { padding: 10px 0 10px; margin-bottom: 10px; }
+  .reel-item__meta { flex-direction: column; gap: 10px; padding-top: 12px; }
+  .reel-item__credits { gap: 14px; }
+  .reel-item__desc { font-size: 14px; line-height: 1.5; }
+
   .video-modal__close { top: -44px; width: 36px; height: 36px; }
 }
 
 /* ---------- Small Mobile (≤ 460px) ---------- */
 @media (max-width: 460px) {
-  .video-hero { padding: calc(var(--nav-height, 72px) + 60px) 0 50px; }
+  .cinema-reel { padding: 0 0 36px; }
+  .video-hero { padding: calc(var(--nav-height, 72px) + 50px) 0 32px; }
   .video-hero__title { font-size: clamp(52px, 16vw, 96px); line-height: 0.92; }
   .video-hero__label { font-size: 11px; letter-spacing: 0.16em; }
   .video-hero__sub { font-size: 14px; line-height: 1.55; }
 
-  .reel-item { margin-bottom: 48px; }
+  /* Even tighter on small phones */
+  .reel-item { margin-bottom: 22px; }
+  .reel-item__index-row { padding: 8px 0 8px; margin-bottom: 8px; }
+  .reel-item__meta { gap: 8px; padding-top: 10px; }
+  .reel-item__desc { font-size: 13.5px; line-height: 1.5; }
   .reel-item__index { font-size: 11px; }
   .reel-item__title { font-size: clamp(28px, 8vw, 42px); line-height: 1.0; }
   .reel-item__client { font-size: 11px; letter-spacing: 0.14em; }
