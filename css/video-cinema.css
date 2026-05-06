@@ -505,3 +505,111 @@ body.modal-open {
     line-height: 1.45 !important;
   }
 }
+
+/* ============================================================
+   ULTRA-FORCED MOBILE FIX — VIDEO REEL SPACING (v2)
+   Root cause: .reel-item__meta inherits justify-content:space-between
+   from desktop, which spreads desc & credits apart on mobile column layout.
+   Also forces .reel-item__media height cap so 16:9 doesn't dominate viewport.
+   ============================================================ */
+@media (max-width: 900px) {
+  /* 1. Reset reel-item to a plain block — no flex, no animation hiding */
+  body.video-page article.reel-item,
+  body.video-page .cinema-reel .reel-item,
+  body.video-page .reel-item {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    margin-bottom: 16px !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  /* 2. Index row — tight */
+  body.video-page article.reel-item .reel-item__index-row,
+  body.video-page .cinema-reel .reel-item__index-row {
+    padding: 6px 0 6px !important;
+    margin-bottom: 6px !important;
+    gap: 12px !important;
+  }
+
+  /* 3. Media — keep 16:9 BUT cap height so it never dominates the screen */
+  body.video-page article.reel-item .reel-item__media,
+  body.video-page .cinema-reel .reel-item__media {
+    aspect-ratio: 16 / 9 !important;
+    max-height: 56vw !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 4. *** THE REAL FIX ***
+        Reset justify-content (was space-between from desktop) so desc & credits
+        sit naturally next to each other instead of being pushed apart. */
+  body.video-page article.reel-item .reel-item__meta,
+  body.video-page .cinema-reel .reel-item__meta,
+  body.video-page .reel-item__meta {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    align-content: flex-start !important;
+    gap: 8px !important;
+    padding: 8px 0 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* 5. Description — natural height, no flex stretch */
+  body.video-page article.reel-item .reel-item__desc,
+  body.video-page .cinema-reel .reel-item__desc {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 6. Credits — natural height, no flex stretch */
+  body.video-page article.reel-item .reel-item__credits,
+  body.video-page .cinema-reel .reel-item__credits {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    gap: 14px !important;
+    padding: 0 !important;
+  }
+
+  /* 7. Section padding — no extra bottom space */
+  body.video-page main.cinema-reel,
+  body.video-page .cinema-reel { padding: 0 0 24px !important; }
+
+  body.video-page header.video-hero,
+  body.video-page .video-hero { padding: calc(var(--nav-height, 72px) + 48px) 0 24px !important; }
+}
+
+/* Even tighter on small phones */
+@media (max-width: 460px) {
+  body.video-page article.reel-item,
+  body.video-page .reel-item { margin-bottom: 12px !important; }
+
+  body.video-page article.reel-item .reel-item__media,
+  body.video-page .reel-item__media { max-height: 60vw !important; }
+
+  body.video-page article.reel-item .reel-item__meta,
+  body.video-page .reel-item__meta {
+    gap: 6px !important;
+    padding: 6px 0 0 !important;
+  }
+
+  body.video-page article.reel-item .reel-item__desc,
+  body.video-page .reel-item__desc {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+  }
+}
