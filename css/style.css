@@ -771,125 +771,142 @@ input, textarea, select { font-family: inherit; }
 }
 
 /* ============================================
-   MOBILE RECENT WORK — 세로 갤러리 형식
-   가로 스와이프 대신 카드가 세로로 나열되는 자연스러운 갤러리
-   면적당 한 장씩 크게 보이고, 페이지 스크롤로 자연스럽게 이동
+   MOBILE RECENT WORK - native horizontal swipe
+   가로 스와이프 구조 그대로 유지
+   JS 드래그 대신 브라우저 네이티브 overflow-x 스크롤로 전환
+   이렇게 하면 세로 스와이프는 그대로 페이지 스크롤로 동작하고,
+   가로 스와이프는 카드 영역에서만 동작해서 흔들림 없음
    ============================================ */
 @media (max-width: 900px) {
-  /* 1. 외부 컨테이너 — 가로 스크롤 완전 해제 */
+  /* 1. 외부 컨테이너 - 네이티브 가로 스크롤 활성화 */
   .work-hscroll {
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 var(--grid-padding, 24px) !important;
     cursor: default !important;
-    padding: 0 !important;
-    touch-action: auto !important;
-    -webkit-user-select: auto !important;
-    user-select: auto !important;
+    /* 세로는 페이지가 처리, 가로만 이 영역에서 */
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain;
+    /* 스크롤바 숨김 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
   }
+  .work-hscroll::-webkit-scrollbar { display: none; }
 
-  /* 2. 트랙을 그리드 세로 스택으로 전환 */
+  /* 2. 트랙 - JS가 설정한 transform 초기화, 네이티브 스크롤로 전환 */
   .work-hscroll__track {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
     transform: none !important;
     transition: none !important;
-    gap: 24px !important;
-    padding: 0 clamp(20px, 5vw, 32px) !important;
     will-change: auto !important;
-    touch-action: auto !important;
+    touch-action: pan-x !important;
+    /* 기존 flex 유지, width: max-content로 자연 확장 */
   }
 
-  /* 3. 각 카드 — 폭 100%, 높이 자동 */
+  /* 3. 각 카드 - 스크롤 스납으로 깔끔하게 정렬 */
   .work-card {
-    width: 100% !important;
-    flex-shrink: 0 !important;
-    height: auto !important;
-    min-height: 60vw !important;
-    max-height: 480px !important;
-    aspect-ratio: 4 / 5 !important;
-    touch-action: auto !important;
-    -webkit-touch-callout: default !important;
-    -webkit-user-drag: none;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    touch-action: pan-x !important;
   }
   .work-card img {
     -webkit-user-drag: none;
     pointer-events: none;
   }
 
-  /* 4. 데스크톱 호버 효과(parallax) 제거 — 모바일은 탭에 반응 */
+  /* 4. 데스크톱 호버 효과(parallax) 제거 - 모바일은 탭에 반응 */
   .work-card:hover { transform: none !important; }
   .work-card:hover img { transform: none !important; }
 
-  /* 5. 화살표 버튼 / 카운터 숨김 — 갤러리엔 필요 없음 */
-  .recent-work__nav,
-  .work-nav,
-  .work-nav__counter,
+  /* 5. 화살표 버튼만 숨김 - 카운터(09 / 10)는 유지 */
   #workNavPrev,
-  #workNavNext,
-  #workNavCur,
-  #workNavTotal {
+  #workNavNext {
     display: none !important;
   }
 
-  /* 6. Recent Work 헤더 아래 공간 조정 */
-  .recent-work__header {
-    margin-bottom: clamp(24px, 5vw, 40px) !important;
-    padding: 0 clamp(20px, 5vw, 32px);
+  /* 6. 카드 너비 - 한 화면에 앞쁞만 살짝 보이도록 조정 (스와이프 힌트) */
+  .work-card {
+    width: clamp(280px, 80vw, 360px) !important;
+    flex-shrink: 0;
   }
 }
 
+
+
 /* ============================================
-   MOBILE STICKY-SERVICES FIX — 인덱스 페이지
-   데스크톱: 좌측 sticky 이미지 + 우측 4개 패널
-   모바일: sticky 해제, 세로로 4개 서비스 수직 스택
-   각 서비스는 "대표 이미지 1장 + 설명 텍스트" 구조
+   MOBILE STICKY-SERVICES — Option A Layout
+   Desktop: left sticky image + right 4 panels (unchanged)
+   Mobile : Hero image (slide 0) on top + 3 thumbnails (slide 1-3) below
+            Slide 4 hidden. Each service shows multiple works at once.
    ============================================ */
 @media (max-width: 900px) {
-  /* 1. 그리드 레이아웃 해제 — 세로 스택 */
+  /* 1. Disable desktop grid; stack vertically */
   .sticky-services {
     grid-template-columns: 1fr !important;
     display: block !important;
   }
 
-  /* 2. 좌측 sticky 이미지 패널 — sticky 해제, 잠시 숨김 (아래에서 각 서비스별 대표 이미지로 대체) */
+  /* 2. Hide the desktop sticky visual column entirely */
   .sticky-services__visual {
     display: none !important;
   }
 
-  /* 3. 우측 패널 영역 전체 폭 사용 */
+  /* 3. Right panel column takes full width */
   .sticky-services__panels {
     border-left: none !important;
     width: 100%;
   }
 
-  /* 4. 각 서비스 패널 — 높이 자동, 아래에 대표 이미지를 추가 */
+  /* 4. Each service panel becomes a self-contained card.
+        Use flex column so ::before (hero), ::after (thumbs),
+        and .panel-inner (text) can be ordered top->bottom. */
   .sticky-services__panel {
     min-height: auto !important;
     padding: 0 !important;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     position: relative;
+    display: flex !important;
+    flex-direction: column !important;
   }
   .sticky-services__panel:last-child { border-bottom: none; }
 
+  /* 5. Inside each panel: build a mobile-only image gallery
+        using the existing .sticky-services__img elements.
+        We turn the panel itself into a flex column so the
+        image group sits ABOVE the text. */
   .sticky-services__panel-inner {
     opacity: 1 !important;
     transform: none !important;
-    padding: clamp(40px, 8vw, 64px) clamp(24px, 5vw, 40px) clamp(32px, 6vw, 48px) !important;
-    gap: 18px;
+    padding: clamp(28px, 6vw, 44px) clamp(22px, 5vw, 36px) clamp(36px, 7vw, 52px) !important;
+    gap: 16px;
+    order: 2;
   }
 
-  /* 5. 각 서비스 패널 위쪽에 대표 이미지 추가 (data-index 기준) */
+  /* 6. Mobile gallery container — appears on each panel via ::before is NOT used now.
+        Instead we promote the existing data-service images that match this panel. */
+
+  /* 6a. Hide every image inside the visual block by default on mobile
+         (we already hid .sticky-services__visual entirely above) */
+
+  /* 6b. Re-create per-panel galleries by cloning images via CSS background-image
+         on the panel itself (representative) + a thumbnail strip injected via
+         a flex pseudo-row using the ::before for the hero and child layout. */
+
+  /* Hero (representative) image — top of each panel */
   .sticky-services__panel::before {
     content: '';
     display: block;
     width: 100%;
-    height: 56vw;
+    height: 62vw;
     max-height: 380px;
     min-height: 220px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #000;
+    background-color: #0a0a0a;
+    order: 0;
   }
   .sticky-services__panel[data-index="0"]::before {
     background-image: url('../images/branding/01_branding_anthracite.webp');
@@ -904,40 +921,99 @@ input, textarea, select { font-family: inherit; }
     background-image: url('../images/video/cars-and-hoops-luxury-supercar-event-vancouver.jpeg');
   }
 
-  /* 6. 서비스 번호 레이블 (01, 02, 03, 04) 더 눈에 띄게 */
+  /* Thumbnail row — under the hero image, before the text panel */
+  .sticky-services__panel::after {
+    content: '';
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    max-height: 140px;
+    order: 1;
+    /* Use 3 images stacked horizontally via multiple backgrounds */
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 33.333% 100%, 33.333% 100%, 33.333% 100%;
+    background-position: 0% center, 50% center, 100% center;
+    background-color: #000;
+  }
+
+  /* Per-service thumbnail strips (slides 1, 2, 3) */
+  .sticky-services__panel[data-index="0"]::after {
+    background-image:
+      url('../images/branding/02_il_forno_kitchen_identity.jpg'),
+      url('../images/branding/03_el_molino_brand_deck.jpg'),
+      url('../images/branding/04_la_foret_ig.jpg');
+  }
+  .sticky-services__panel[data-index="1"]::after {
+    background-image:
+      url('../images/social/02_cafe_opening_thumb.jpg'),
+      url('../images/social/03_apparel_brand_thumb.jpg'),
+      url('../images/social/04_bar_lounge_thumb.jpg');
+  }
+  .sticky-services__panel[data-index="2"]::after {
+    background-image:
+      url('../images/photo/food/06_food_martini_cocktail.jpg'),
+      url('../images/photo/product/01_apparel_product.jpg'),
+      url('../images/photo/product/02_engagement_ring.jpg');
+  }
+  .sticky-services__panel[data-index="3"]::after {
+    background-image:
+      url('../images/video/dl-acro-brand-campaign-film.jpeg'),
+      url('../images/video/f-diary-perfume-beauty-campaign-film.jpeg'),
+      url('../images/video/mcst-kocca-wild-vr-content.jpeg');
+  }
+
+  /* 7. Service number label (01, 02, 03, 04) */
   .sticky-services__num {
     font-size: 13px !important;
     letter-spacing: 0.18em;
     color: var(--color-accent) !important;
   }
 
-  /* 7. 제목 크기 모바일 최적화 */
+  /* 8. Service title */
   .sticky-services__title {
-    font-size: clamp(40px, 11vw, 64px) !important;
+    font-size: clamp(38px, 10.5vw, 60px) !important;
     line-height: 0.95 !important;
   }
 
-  /* 8. 설명 텍스트 가독성 */
+  /* 9. Description */
   .sticky-services__desc {
     font-size: 14.5px !important;
     line-height: 1.65 !important;
-    color: rgba(255,255,255,0.7) !important;
+    color: rgba(255,255,255,0.72) !important;
     max-width: 100% !important;
   }
 
-  /* 9. 서비스 항목 리스트 */
+  /* 10. Bullet list */
   .sticky-services__list {
-    padding-top: 16px !important;
+    padding-top: 14px !important;
     gap: 10px;
   }
   .sticky-services__list li {
     font-size: 13px !important;
   }
 
-  /* 10. See Work 링크 */
+  /* 11. View work link */
   .sticky-services__link {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 12px !important;
+  }
+}
+
+/* Very small screens — slightly smaller hero & tighter thumbnails */
+@media (max-width: 460px) {
+  .sticky-services__panel::before {
+    height: 66vw;
+    min-height: 200px;
+  }
+  .sticky-services__panel::after {
+    aspect-ratio: 3 / 1;
+    max-height: 110px;
+    gap: 5px;
+  }
+  .sticky-services__title {
+    font-size: clamp(34px, 11vw, 52px) !important;
   }
 }
 
