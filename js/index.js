@@ -8,14 +8,36 @@
 
   /* ================================================================
      0. HERO SLIDESHOW — 1.5초 간격 자동 전환
+     모바일 호환성 강화: 각 슬라이드에 직접 opacity를 설정하고
+     강제 리플로우로 사파리 레이어 캐시 버그 회피
   ================================================================ */
   const heroSlideEls = document.querySelectorAll('.hero__slide');
   if (heroSlideEls.length > 1) {
+    // 초기 상태 명시적 설정
+    heroSlideEls.forEach((el, i) => {
+      el.style.opacity = i === 0 ? '1' : '0';
+      el.style.transition = 'opacity 0.8s cubic-bezier(0.4,0,0.2,1)';
+      el.style.willChange = 'opacity';
+      // GPU 레이어 강제
+      el.style.transform = 'translate3d(0,0,0)';
+      el.style.backfaceVisibility = 'hidden';
+    });
+
     let heroSlideIdx = 0;
     setInterval(() => {
-      heroSlideEls[heroSlideIdx].classList.remove('active');
+      const prev = heroSlideEls[heroSlideIdx];
       heroSlideIdx = (heroSlideIdx + 1) % heroSlideEls.length;
-      heroSlideEls[heroSlideIdx].classList.add('active');
+      const next = heroSlideEls[heroSlideIdx];
+
+      // 클래스와 인라인 스타일 둘 다 적용 — CSS가 아닌 다른 메디어 쿼리가 opacity를 덮어도 동작
+      prev.classList.remove('active');
+      prev.style.opacity = '0';
+
+      next.classList.add('active');
+      next.style.opacity = '1';
+
+      // 강제 리플로우 (모바일 사파리에서 opacity transition이 무시되는 경우 방지)
+      void next.offsetHeight;
     }, 1500);
   }
 
@@ -212,25 +234,68 @@
       momentum();
     });
 
-    /* ---------- 터치 ---------- */
+    /* ---------- 터치 (세로 흔들림 방지 강화) ---------- */
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchDirection = null; // 'horizontal' | 'vertical' | null
+
     hscroll.addEventListener('touchstart', (e) => {
+      const t = e.touches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+      touchDirection = null;
+
       isDragging = true;
-      startX = e.touches[0].clientX - currentX;
-      lastX  = e.touches[0].clientX;
+      startX = t.clientX - currentX;
+      lastX  = t.clientX;
       cancelAnimationFrame(rafId);
       htrack.style.transition = 'none';
     }, { passive: true });
-    window.addEventListener('touchmove', (e) => {
+
+    // touchmove는 passive: false로 등록 → 가로 드래그 감지 시 세로 스크롤 차단
+    hscroll.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
-      velX     = e.touches[0].clientX - lastX;
-      lastX    = e.touches[0].clientX;
-      currentX = clampX(e.touches[0].clientX - startX);
+      const t = e.touches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = t.clientY - touchStartY;
+
+      // 첫 움직임 시 방향 결정 (8px 이상 움직일 때)
+      if (touchDirection === null) {
+        const absDx = Math.abs(dx);
+        const absDy = Math.abs(dy);
+        if (absDx > 8 || absDy > 8) {
+          touchDirection = absDx > absDy ? 'horizontal' : 'vertical';
+        } else {
+          return; // 아직 방향 미정
+        }
+      }
+
+      // 세로 스와이프면 가로 드래그 중단 (페이지 스크롤 허용)
+      if (touchDirection === 'vertical') {
+        isDragging = false;
+        return;
+      }
+
+      // 가로 스와이프면 페이지 세로 스크롤 차단
+      if (touchDirection === 'horizontal') {
+        e.preventDefault();
+      }
+
+      velX     = t.clientX - lastX;
+      lastX    = t.clientX;
+      currentX = clampX(t.clientX - startX);
       htrack.style.transform = `translateX(${currentX}px)`;
-    }, { passive: true });
-    window.addEventListener('touchend', () => {
+    }, { passive: false });
+
+    hscroll.addEventListener('touchend', () => {
       if (!isDragging) return;
       isDragging = false;
+      touchDirection = null;
       momentum();
+    });
+    hscroll.addEventListener('touchcancel', () => {
+      isDragging = false;
+      touchDirection = null;
     });
 
     /* ---------- 관성 + 카드 스냅 ---------- */
