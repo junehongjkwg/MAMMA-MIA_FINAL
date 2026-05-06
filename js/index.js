@@ -234,51 +234,38 @@
       momentum();
     });
 
-    /* ---------- 터치 (세로 흔들림 방지 강화) ---------- */
+    /* ---------- 터치 (가로 전용 영역, 세로 흔들림 완전 차단) ---------- */
     let touchStartX = 0;
     let touchStartY = 0;
-    let touchDirection = null; // 'horizontal' | 'vertical' | null
+    let touchActive = false;
 
     hscroll.addEventListener('touchstart', (e) => {
       const t = e.touches[0];
       touchStartX = t.clientX;
       touchStartY = t.clientY;
-      touchDirection = null;
-
+      touchActive = true;
       isDragging = true;
       startX = t.clientX - currentX;
       lastX  = t.clientX;
+      velX = 0;
       cancelAnimationFrame(rafId);
       htrack.style.transition = 'none';
     }, { passive: true });
 
-    // touchmove는 passive: false로 등록 → 가로 드래그 감지 시 세로 스크롤 차단
+    // touchmove는 가로 전용 — 세로 움직임은 무조건 차단
     hscroll.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
+      if (!touchActive) return;
       const t = e.touches[0];
+
+      // 변위 계산
       const dx = t.clientX - touchStartX;
       const dy = t.clientY - touchStartY;
 
-      // 첫 움직임 시 방향 결정 (8px 이상 움직일 때)
-      if (touchDirection === null) {
-        const absDx = Math.abs(dx);
-        const absDy = Math.abs(dy);
-        if (absDx > 8 || absDy > 8) {
-          touchDirection = absDx > absDy ? 'horizontal' : 'vertical';
-        } else {
-          return; // 아직 방향 미정
-        }
-      }
-
-      // 세로 스와이프면 가로 드래그 중단 (페이지 스크롤 허용)
-      if (touchDirection === 'vertical') {
-        isDragging = false;
-        return;
-      }
-
-      // 가로 스와이프면 페이지 세로 스크롤 차단
-      if (touchDirection === 'horizontal') {
+      // 키 포인트: 가로 움직임이 조금이라도 감지되면 세로 움직임 무시하고 세로 스크롤을 차단
+      // (touch-action: pan-x 덕분에 브라우저가 이미 세로 스크롤을 넘겼으며 e.preventDefault로 확실히 차단)
+      if (Math.abs(dx) > 3) {
         e.preventDefault();
+        e.stopPropagation();
       }
 
       velX     = t.clientX - lastX;
@@ -288,15 +275,16 @@
     }, { passive: false });
 
     hscroll.addEventListener('touchend', () => {
-      if (!isDragging) return;
+      if (!touchActive) return;
+      touchActive = false;
       isDragging = false;
-      touchDirection = null;
       momentum();
-    });
+    }, { passive: true });
+
     hscroll.addEventListener('touchcancel', () => {
+      touchActive = false;
       isDragging = false;
-      touchDirection = null;
-    });
+    }, { passive: true });
 
     /* ---------- 관성 + 카드 스냅 ---------- */
     function momentum() {
