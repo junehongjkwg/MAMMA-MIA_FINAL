@@ -1,77 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://www.mammamiacreative.com/</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/index.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/price-plan.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/contact.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio.html?cat=branding</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio.html?cat=social</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio.html?cat=photo</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio.html?cat=video</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio-branding.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio-social.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio-photo.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mammamiacreative.com/portfolio-video.html</loc>
-  <lastmod>2026-05-06T07:37:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.mammamiacreative.com/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/price-plan.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/portfolio.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/portfolio-branding.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/portfolio-social.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/portfolio-photo.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/portfolio-video.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.mammamiacreative.com/contact.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
