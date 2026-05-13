@@ -1,0 +1,90 @@
+# ============================================
+# MAMMA MIA Marketing Agency
+# https://www.mammamiacreative.com/
+# robots.txt — Last updated: 2026-05-13
+# ============================================
+
+# 모든 검색 엔진 크롤러 허용
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.log$
+
+# ============================================
+# 주요 검색 엔진별 세부 설정
+# ============================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Google Images (포트폴리오 이미지 검색 노출)
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /img/
+Allow: /assets/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Naver (한국 검색)
+User-agent: Yeti
+Allow: /
+Crawl-delay: 2
+
+# Daum / Kakao
+User-agent: Daumoa
+Allow: /
+Crawl-delay: 2
+
+# ============================================
+# AI 크롤러 차단 — 포트폴리오 작품 보호
+# ============================================
+User-agent: GPTBot
+Disallow: /portfolio
+Disallow: /portfolio-branding.html
+Disallow: /portfolio-photo.html
+Disallow: /portfolio-video.html
+Disallow: /portfolio-social.html
+
+User-agent: CCBot
+Disallow: /portfolio
+Disallow: /portfolio-branding.html
+Disallow: /portfolio-photo.html
+Disallow: /portfolio-video.html
+Disallow: /portfolio-social.html
+
+User-agent: anthropic-ai
+Disallow: /portfolio
+
+User-agent: Claude-Web
+Disallow: /portfolio
+
+User-agent: Google-Extended
+Disallow: /portfolio
+
+# ============================================
+# SEO 분석 봇 차단 (서버 부하 절감)
+# ============================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ============================================
+# 사이트맵 위치
+# ============================================
+Sitemap: https://www.mammamiacreative.com/sitemap.xml
