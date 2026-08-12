@@ -39,13 +39,13 @@
   });
 
   /* ---- Highlight active tab on scroll ---- */
-  const sectionIds = ['branding', 'social', 'photo', 'video'];
+  const sectionIds = ['social', 'photo', 'video', 'branding'];
   const navH = getNavHeight();
   const tabH = getTabsHeight();
 
   function updateActiveTab() {
     const scrollY = window.scrollY + navH + tabH + 40;
-    let current = 'branding';
+    let current = 'social';
 
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
